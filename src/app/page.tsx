@@ -43,7 +43,7 @@ export default function LandingPage() {
             </Link>
             <Link
               href="/signup"
-              className="px-5 py-2.5 bg-[#3498db] text-white font-bold rounded-lg text-sm hover:scale-105 active:scale-95 transition-transform"
+              className="px-5 py-2.5 bg-[oklch(0.55_0.24_262.66)] text-white font-bold rounded-lg text-sm hover:scale-105 active:scale-95 transition-transform"
               style={{ boxShadow: '0 4px 20px rgba(52,152,219,0.3)' }}
             >
               Start Your Trip Space
@@ -69,7 +69,7 @@ export default function LandingPage() {
               </p>
               <Link
                 href="/signup"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[#3498db] text-white font-bold text-lg rounded-xl hover:scale-105 active:scale-95 transition-transform"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-[oklch(0.55_0.24_262.66)] text-white font-bold text-lg rounded-xl hover:scale-105 active:scale-95 transition-transform"
                 style={{ boxShadow: '0 10px 40px rgba(52,152,219,0.3)' }}
               >
                 Start Your Trip Space
@@ -253,7 +253,7 @@ export default function LandingPage() {
             </div>
             <Link href="/signup" className="group flex items-center gap-2 font-bold text-[#191c1d]">
               Explore all destinations
-              <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-[#3498db] group-hover:text-white transition-all">
+              <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:text-white transition-all">
                 <ArrowRight size={20} />
               </div>
             </Link>
@@ -321,10 +321,10 @@ export default function LandingPage() {
               },
             ].map((item, i) => (
               <div key={i} className="relative p-10 rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-xl transition-all group">
-                <div className="absolute top-0 right-10 -translate-y-1/2 text-7xl font-black text-black/5 group-hover:text-[#3498db]/10 transition-colors">
+                <div className="absolute top-0 right-10 -translate-y-1/2 text-7xl font-black text-black/5 group-hover:text-[oklch(0.55_0.24_262.66)]/10 transition-colors">
                   {item.step}
                 </div>
-                <div className="w-14 h-14 rounded-2xl bg-[#3498db]/10 flex items-center justify-center text-[#3498db] mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[oklch(0.55_0.24_262.66)]/10 flex items-center justify-center text-[oklch(0.55_0.24_262.66)] mb-6">
                   <item.icon size={28} />
                 </div>
                 <h4 className="text-2xl font-bold text-[#191c1d] mb-3">{item.title}</h4>
@@ -337,7 +337,7 @@ export default function LandingPage() {
         {/* ─── TESTIMONIALS ─── */}
         <section className="max-w-[1280px] mx-auto px-8 pb-32">
           <div className="bg-[#191c1d] rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#3498db] opacity-10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[oklch(0.55_0.24_262.66)] opacity-10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -362,7 +362,7 @@ export default function LandingPage() {
                       img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
                     }
                   ].map((t, i) => (
-                    <div key={i} className="border-l-2 border-[#3498db] pl-8">
+                    <div key={i} className="border-l-2 border-[oklch(0.55_0.24_262.66)] pl-8">
                       <p className="text-xl text-white/80 italic mb-4">"{t.text}"</p>
                       <div className="flex items-center gap-4">
                         <img src={t.img} alt={t.author} className="w-10 h-10 rounded-full object-cover" />

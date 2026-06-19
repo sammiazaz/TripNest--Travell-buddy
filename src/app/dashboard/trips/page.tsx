@@ -20,7 +20,7 @@ export default function MyTripsPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="bg-blue-50 text-[#3498db] px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">1 Active</div>
+          <div className="bg-blue-50 text-[oklch(0.55_0.24_262.66)] px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">1 Active</div>
           <div className="bg-slate-100 text-slate-600 px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">3 Upcoming</div>
         </div>
       </section>
@@ -30,7 +30,7 @@ export default function MyTripsPage() {
       {/* ================================================== */}
       <section className="space-y-4">
         <div className="flex items-center gap-2 px-1">
-          <div className="w-2 h-2 rounded-full bg-[#3498db]"></div>
+          <div className="w-2 h-2 rounded-full bg-[oklch(0.55_0.24_262.66)]"></div>
           <h2 className="text-base font-extrabold text-[#191c1d] tracking-tight">Active Now</h2>
         </div>
 
@@ -44,10 +44,10 @@ export default function MyTripsPage() {
 
           <div className="absolute bottom-6 left-6 w-[calc(100%-3rem)] md:w-[500px] bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.1)]">
             <div className="flex justify-between items-start mb-2">
-              <span className="text-[10px] font-bold text-[#3498db] uppercase tracking-wider">Ongoing Journey</span>
+              <span className="text-[10px] font-bold text-[oklch(0.55_0.24_262.66)] uppercase tracking-wider">Ongoing Journey</span>
               <div className="text-right">
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-0.5">Budget Spent</p>
-                <p className="text-xs font-bold text-[#3498db] tracking-wide">$4,280 / $6,000</p>
+                <p className="text-xs font-bold text-[oklch(0.55_0.24_262.66)] tracking-wide">$4,280 / $6,000</p>
               </div>
             </div>
 
@@ -62,7 +62,7 @@ export default function MyTripsPage() {
                 <span className="text-slate-600">Day 4 of 7</span>
               </div>
               <div className="h-1.5 w-full bg-slate-300/50 rounded-full overflow-hidden">
-                <div className="h-full bg-[#3498db] w-[57%] rounded-full shadow-[0_0_10px_rgba(52,152,219,0.5)]" />
+                <div className="h-full bg-[oklch(0.55_0.24_262.66)] w-[57%] rounded-full shadow-[0_0_10px_rgba(52,152,219,0.5)]" />
               </div>
             </div>
           </div>
@@ -81,15 +81,15 @@ export default function MyTripsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Card 1 */}
-          <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group cursor-pointer hover:shadow-md transition-shadow flex flex-col">
+          <div className="bg-white/50 backdrop-blur-lg rounded-[2rem] overflow-hidden shadow-md border border-white/60 group cursor-pointer hover:shadow-xl transition-all flex flex-col">
             <div className="relative h-64 w-full shrink-0">
               <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="Paris Weekend" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              
+
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-xs font-bold text-[#191c1d] shadow-sm">
                 In 45 Days
               </div>
-              
+
               <div className="absolute bottom-4 left-5 right-5">
                 <h3 className="text-2xl font-black text-white mb-1">Paris Weekend</h3>
                 <p className="text-white/80 text-sm font-medium flex items-center gap-1 mb-3">
@@ -101,25 +101,25 @@ export default function MyTripsPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="p-5 mt-auto bg-white">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Dec 5 - Dec 8</span>
-                <span className="text-sm font-black text-[#3498db]">₹1,200</span>
+                <span className="text-sm font-black text-[oklch(0.55_0.24_262.66)]">₹1,200</span>
               </div>
             </div>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group cursor-pointer hover:shadow-md transition-shadow flex flex-col">
+          <div className="bg-white/50 backdrop-blur-lg rounded-[2rem] overflow-hidden shadow-md border border-white/60 group cursor-pointer hover:shadow-xl transition-all flex flex-col">
             <div className="relative h-64 w-full shrink-0">
               <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=600&q=80" alt="Tokyo Exploration" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              
+
               <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-xs font-bold text-[#191c1d] shadow-sm">
                 In 2 Months
               </div>
-              
+
               <div className="absolute bottom-4 left-5 right-5">
                 <h3 className="text-2xl font-black text-white mb-1">Tokyo Exploration</h3>
                 <p className="text-white/80 text-sm font-medium flex items-center gap-1 mb-3">
@@ -131,18 +131,18 @@ export default function MyTripsPage() {
                 </div>
               </div>
             </div>
-            
+
             <div className="p-5 mt-auto bg-white">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Mar 10 - Mar 24</span>
-                <span className="text-sm font-black text-[#3498db]">₹3,500</span>
+                <span className="text-sm font-black text-[oklch(0.55_0.24_262.66)]">₹3,500</span>
               </div>
             </div>
           </div>
 
           {/* Add New Trip Card */}
-          <div className="rounded-[2rem] border-2 border-dashed border-slate-200 hover:border-[#3498db] hover:bg-blue-50/50 transition-all cursor-pointer flex flex-col items-center justify-center p-8 group min-h-[320px]">
-            <div className="w-14 h-14 rounded-full bg-slate-100 group-hover:bg-[#3498db] group-hover:text-white flex items-center justify-center text-slate-400 mb-4 transition-colors">
+          <div className="rounded-[2rem] border-2 border-dashed border-slate-200 hover:border-[oklch(0.55_0.24_262.66)] hover:bg-blue-50/50 transition-all cursor-pointer flex flex-col items-center justify-center p-8 group min-h-[320px]">
+            <div className="w-14 h-14 rounded-full bg-slate-100 group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:text-white flex items-center justify-center text-slate-400 mb-4 transition-colors">
               <Plus size={24} />
             </div>
             <h3 className="text-lg font-black text-[#191c1d] text-center mb-2">Plan Something New</h3>
@@ -165,27 +165,27 @@ export default function MyTripsPage() {
             { id: 'highlands-roadtrip', name: 'Highlands Roadtrip', loc: 'Scotland, UK', date: 'May 2025', img: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=200&q=80', members: 2 },
           ].map((trip, i) => (
             <Link key={i} href={`/dashboard/trips/${trip.id}`} className="block">
-            <div className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between group hover:shadow-md transition-shadow cursor-pointer">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 transition-all duration-500">
-                  <img src={trip.img} alt={trip.name} className="w-full h-full object-cover" />
+              <div className="bg-white/50 backdrop-blur-md p-3 rounded-2xl border border-white/60 shadow-sm flex items-center justify-between group hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 transition-all duration-500">
+                    <img src={trip.img} alt={trip.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#191c1d]">{trip.name}</h3>
+                    <p className="text-xs font-medium text-slate-500">{trip.loc} • {trip.date}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-[#191c1d]">{trip.name}</h3>
-                  <p className="text-xs font-medium text-slate-500">{trip.loc} • {trip.date}</p>
+                <div className="flex items-center gap-4 pr-2">
+                  <div className="flex -space-x-2">
+                    {[...Array(trip.members)].map((_, idx) => (
+                      <div key={idx} className="w-6 h-6 rounded-full border border-white bg-slate-200 flex items-center justify-center text-[8px] font-bold text-slate-600">
+                        U
+                      </div>
+                    ))}
+                  </div>
+                  <ChevronRight size={18} className="text-slate-300 group-hover:text-[oklch(0.55_0.24_262.66)] transition-colors" />
                 </div>
               </div>
-              <div className="flex items-center gap-4 pr-2">
-                <div className="flex -space-x-2">
-                  {[...Array(trip.members)].map((_, idx) => (
-                    <div key={idx} className="w-6 h-6 rounded-full border border-white bg-slate-200 flex items-center justify-center text-[8px] font-bold text-slate-600">
-                      U
-                    </div>
-                  ))}
-                </div>
-                <ChevronRight size={18} className="text-slate-300 group-hover:text-[#3498db] transition-colors" />
-              </div>
-            </div>
             </Link>
           ))}
         </div>

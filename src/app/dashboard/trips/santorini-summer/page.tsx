@@ -32,7 +32,7 @@ interface Expense {
   createdBy: string;
   notes?: string;
   // How much each member paid for this specific expense
-  paidBy: Record<string, number>; 
+  paidBy: Record<string, number>;
 }
 
 interface TimelineDay {
@@ -181,7 +181,7 @@ const CATEGORY_EMOJIS: Record<string, string> = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Food: '#3498db',
+  Food: 'oklch(0.55_0.24_262.66)',
   Hotel: '#2ecc71',
   Cab: '#f39c12',
   Tickets: '#9b59b6',
@@ -192,7 +192,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 export default function SantoriniTripPage() {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
-  
+
   // Stateful Data
   const [expenses, setExpenses] = useState<Expense[]>(INITIAL_EXPENSES);
   const [members, setMembers] = useState<Member[]>(INITIAL_MEMBERS);
@@ -309,7 +309,7 @@ export default function SantoriniTripPage() {
       const creditAmount = creditor.balance;
 
       const settledVal = Math.min(debtAmount, creditAmount);
-      
+
       suggestions.push({
         id: `s-${debtor.id}-${creditor.id}-${settledVal.toFixed(0)}`,
         from: debtor,
@@ -360,7 +360,7 @@ export default function SantoriniTripPage() {
     // Auto split equally among all members
     const splitAmt = amt / members.length;
     const initialPaid: Record<string, number> = {};
-    
+
     // By default, Sammi pays the total amount and splits equally
     members.forEach((m, idx) => {
       initialPaid[m.id] = idx === 0 ? amt : 0; // Organizer pays
@@ -381,7 +381,7 @@ export default function SantoriniTripPage() {
     };
 
     setExpenses([newExpense, ...expenses]);
-    
+
     // Reset Form
     setNewExpTitle('');
     setNewExpCategory('Food');
@@ -427,7 +427,7 @@ export default function SantoriniTripPage() {
 
     setExpenses(updatedExpenses);
     setShowContributionModal(null);
-    
+
     // Also update selected expense if detail drawer is open
     if (selectedExpense && selectedExpense.id === showContributionModal.id) {
       const currentUpdated = updatedExpenses.find(e => e.id === showContributionModal.id);
@@ -588,59 +588,63 @@ export default function SantoriniTripPage() {
       </div>
 
       {/* ── COVER HERO CARD (Full width) ── */}
-      <div className="relative w-full h-[320px] rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group">
+      <div className="relative w-full h-[460px] rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group">
         <img
           src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
           alt="Santorini Summer"
-          className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
+          className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
-        {/* Trip info overlay */}
-        <div className="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <span className="bg-[#3498db] text-white px-3.5 py-1 rounded-full text-[10px] font-bold tracking-wider uppercase shadow-md inline-block mb-3">
+        <div className="absolute inset-0 p-10 flex flex-col justify-between">
+          <div className="flex justify-between items-start">
+            <span className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2">
               ✈️ Summer Getaway
             </span>
-            <h1 className="text-4xl font-black text-white tracking-tight leading-none mb-3">Santorini Summer</h1>
-            <div className="flex flex-wrap items-center gap-4 text-white/90">
-              <span className="flex items-center gap-1.5 text-xs font-semibold">
-                <Calendar size={14} className="text-[#3498db]" /> Aug 12 – Aug 22, 2025
-              </span>
-              <span className="text-white/40">•</span>
-              <span className="flex items-center gap-1.5 text-xs font-semibold">
-                <Users size={14} className="text-[#3498db]" /> {members.length} Members
-              </span>
-              <span className="text-white/40">•</span>
-              <span className="flex items-center gap-1.5 text-xs font-semibold">
-                <MapPin size={14} className="text-[#3498db]" /> Greece
-              </span>
-            </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="flex -space-x-2 bg-white/10 backdrop-blur-md p-1.5 rounded-full border border-white/20">
-              {members.map((m, i) => (
-                <div key={i} className={`w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-[10px] font-black ${m.color}`}>
-                  {m.avatar}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-5xl font-black text-white tracking-tight mb-4 drop-shadow-md">Santorini Summer</h1>
+              <div className="flex flex-wrap items-center gap-6 text-white/90">
+                <div className="flex items-center gap-2 font-medium">
+                  <Calendar size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  Aug 12 – Aug 22, 2025
                 </div>
-              ))}
+                <div className="flex items-center gap-2 font-medium">
+                  <Users size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  {members.length} Members
+                </div>
+                <div className="flex items-center gap-2 font-medium">
+                  <MapPin size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  Greece
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2 bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-lg">
+                {members.map((m, i) => (
+                  <div key={i} className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-xs font-black ${m.color}`}>
+                    {m.avatar}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* ── TAB BAR ── */}
-      <div className="bg-white rounded-2xl p-2 border border-slate-100 shadow-sm flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+      <div className="bg-white rounded-2xl p-2 border border-black/5 shadow-sm flex items-center gap-1.5 overflow-x-auto scrollbar-none">
         {tabs.map(({ key, label }) => (
           <button
             key={key}
             onClick={() => setActiveTab(key)}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all uppercase tracking-wider ${
-              activeTab === key
-                ? 'bg-[#3498db] text-white shadow-sm'
-                : 'text-slate-400 hover:text-[#191c1d] hover:bg-slate-50'
-            }`}
+            className={`px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all uppercase tracking-wider ${activeTab === key
+                ? 'bg-[oklch(0.55_0.24_262.66)] text-white shadow-[0_4px_12px_rgba(52,152,219,0.3)] scale-[1.02]'
+                : 'text-[#444748] hover:text-[#191c1d] hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98]'
+              }`}
           >
             {label}
           </button>
@@ -654,25 +658,25 @@ export default function SantoriniTripPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left Column: Stats, Breakdown, Quick Actions */}
           <div className="lg:col-span-8 space-y-6">
-            
+
             {/* Trip Overview Panel */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm space-y-6">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
               <h2 className="text-xs font-extrabold text-[#191c1d] uppercase tracking-wider text-slate-400">Trip Overview</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4">
-                  <p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Total Expense</p>
-                  <p className="text-lg font-black text-[#3498db]">₹{totalExpense.toLocaleString()}</p>
+                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Total Expense</p>
+                  <p className="text-lg font-black text-[oklch(0.55_0.24_262.66)]">₹{totalExpense.toLocaleString()}</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4">
-                  <p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Photos</p>
+                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Photos</p>
                   <p className="text-lg font-black text-[#191c1d]">{gallery.length}</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4">
-                  <p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Places Visited</p>
+                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Places Visited</p>
                   <p className="text-lg font-black text-[#191c1d]">{timeline.filter(t => t.done).length}/{timeline.length}</p>
                 </div>
-                <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4">
-                  <p className="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Settlements</p>
+                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Settlements</p>
                   <p className="text-lg font-black text-orange-500">{settlementSuggestions.length}</p>
                 </div>
               </div>
@@ -682,13 +686,13 @@ export default function SantoriniTripPage() {
                     setNewExpCategory('Food');
                     setShowAddExpense(true);
                   }}
-                  className="flex-1 bg-[#3498db] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-[0_4px_20px_rgba(52,152,219,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5"
                 >
                   <Plus size={14} /> Add Expense
                 </button>
                 <button
                   onClick={handleUploadPhoto}
-                  className="flex-1 bg-slate-50 border border-slate-200 text-slate-600 py-3.5 rounded-xl font-bold text-xs hover:bg-slate-100/50 active:scale-98 transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 bg-slate-50 border border-black/5 text-[#444748] py-3.5 rounded-xl font-bold text-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5"
                 >
                   <UploadCloud size={14} /> Upload Photos
                 </button>
@@ -696,10 +700,10 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Recent Memories & Photo Grid */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-base font-extrabold text-[#191c1d]">Recent Memories</h2>
-                <button onClick={() => setActiveTab('gallery')} className="text-xs font-bold text-[#3498db] hover:underline">View Gallery</button>
+                <button onClick={() => setActiveTab('gallery')} className="text-xs font-bold text-[oklch(0.55_0.24_262.66)] hover:underline">View Gallery</button>
               </div>
               <div className="grid grid-cols-4 gap-3 h-44">
                 {gallery.slice(0, 3).map((item, idx) => (
@@ -718,7 +722,7 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Expense Breakdown by Category */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
               <h2 className="text-base font-extrabold text-[#191c1d] mb-5">Expense Breakdown</h2>
               <DonutChart />
             </div>
@@ -726,12 +730,12 @@ export default function SantoriniTripPage() {
 
           {/* Right Column: Recent Activity & Settlements */}
           <div className="lg:col-span-4 space-y-6">
-            
+
             {/* Settlements Summary */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
               <h2 className="text-base font-extrabold text-[#191c1d] mb-1">Settlement Suggestions</h2>
               <p className="text-[10px] text-slate-400 mb-4 uppercase tracking-wider font-bold">Simplified transactions</p>
-              
+
               {settlementSuggestions.length === 0 ? (
                 <div className="py-6 flex flex-col items-center text-center">
                   <CheckCircle2 size={36} className="text-emerald-500 mb-2" />
@@ -757,9 +761,9 @@ export default function SantoriniTripPage() {
                         <p className="text-xs font-bold text-slate-700 truncate leading-none mb-1">{s.to.name.split(' ')[0]}</p>
                         <p className="text-[9px] text-emerald-500 font-black">₹{s.amount}</p>
                       </div>
-                      <button 
+                      <button
                         onClick={() => handleSettleSuggestion(s.from.id, s.to.id, s.amount)}
-                        className="bg-white border border-slate-200 text-slate-600 px-2 py-1 rounded-lg text-[9px] font-bold hover:bg-[#3498db] hover:text-white hover:border-transparent transition-colors"
+                        className="bg-white border border-slate-200 text-slate-600 px-2 py-1 rounded-lg text-[9px] font-bold hover:bg-[oklch(0.55_0.24_262.66)] hover:text-white hover:border-transparent transition-colors"
                       >
                         Settle
                       </button>
@@ -770,7 +774,7 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Quick Actions Panel */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
               <h2 className="text-base font-extrabold text-[#191c1d] mb-4">Quick Actions</h2>
               <div className="grid grid-cols-2 gap-3">
                 <button
@@ -780,7 +784,7 @@ export default function SantoriniTripPage() {
                   }}
                   className="flex flex-col items-center justify-center gap-2 p-4 bg-slate-50 border border-slate-100 hover:bg-slate-100/50 rounded-2xl transition-colors text-center"
                 >
-                  <Wallet size={20} className="text-[#3498db]" />
+                  <Wallet size={20} className="text-[oklch(0.55_0.24_262.66)]" />
                   <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700">Add Expense</span>
                 </button>
                 <button
@@ -794,11 +798,11 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Recent Trip Activity Log */}
-            <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
               <h2 className="text-base font-extrabold text-[#191c1d] mb-4">Activity Log</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#3498db] mt-1.5 shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[oklch(0.55_0.24_262.66)] mt-1.5 shrink-0" />
                   <div>
                     <p className="text-xs font-bold text-slate-800">Rahul added Hotel Expense</p>
                     <p className="text-[9px] text-slate-400">Yesterday at 12:00 PM</p>
@@ -828,7 +832,7 @@ export default function SantoriniTripPage() {
       {/* 2. EXPENSES TAB */}
       {activeTab === 'expenses' && (
         <div className="space-y-6">
-          
+
           {/* Top Summary Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
@@ -857,18 +861,18 @@ export default function SantoriniTripPage() {
 
           {/* Expenses Dashboard Workspace */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
+
             {/* Left Workspace: Categories & Settlement Suggestions */}
             <div className="lg:col-span-5 space-y-6">
-              
+
               {/* Category breakdown */}
-              <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
                 <h2 className="text-base font-extrabold text-[#191c1d] mb-5">Category breakdown</h2>
                 <DonutChart />
               </div>
 
               {/* Settlements Engine Suggestions */}
-              <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
                 <div className="flex items-center justify-between mb-1">
                   <h2 className="text-base font-extrabold text-[#191c1d]">Settlement Suggestions</h2>
                   {settlementSuggestions.length > 0 && (
@@ -906,7 +910,7 @@ export default function SantoriniTripPage() {
                         </div>
                         <button
                           onClick={() => handleSettleSuggestion(s.from.id, s.to.id, s.amount)}
-                          className="bg-[#3498db] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-sm hover:bg-[#2980b9] transition-all"
+                          className="bg-[oklch(0.55_0.24_262.66)] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-sm hover:bg-[#2980b9] transition-all"
                         >
                           Mark Settled
                         </button>
@@ -920,7 +924,7 @@ export default function SantoriniTripPage() {
 
             {/* Right Workspace: Recent Expenses list */}
             <div className="lg:col-span-7">
-              <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm space-y-4">
+              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-base font-extrabold text-[#191c1d]">Recent Expenses</h2>
@@ -931,7 +935,7 @@ export default function SantoriniTripPage() {
                       setNewExpCategory('Food');
                       setShowAddExpense(true);
                     }}
-                    className="bg-[#3498db] hover:bg-[#2980b9] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                    className="bg-[oklch(0.55_0.24_262.66)] hover:bg-[#2980b9] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
                   >
                     <Plus size={14} /> Add Expense
                   </button>
@@ -945,7 +949,7 @@ export default function SantoriniTripPage() {
                         setSelectedExpense(exp);
                         setShowDetailDrawer(true);
                       }}
-                      className="w-full flex items-center gap-3.5 hover:bg-slate-50 border border-slate-100/50 rounded-2xl px-4 py-3.5 cursor-pointer transition-all text-left"
+                      className="w-full flex items-center gap-3.5 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-white/50 hover:border-white/80 rounded-2xl px-4 py-3.5 cursor-pointer transition-all text-left hover:shadow-lg hover:-translate-y-0.5"
                     >
                       <div className="w-11 h-11 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl shrink-0">
                         {exp.emoji}
@@ -972,7 +976,7 @@ export default function SantoriniTripPage() {
       {/* 3. GALLERY TAB */}
       {activeTab === 'gallery' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm space-y-6">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="text-base font-extrabold text-[#191c1d]">Google Photos Shared Gallery</h2>
@@ -981,7 +985,7 @@ export default function SantoriniTripPage() {
               <div className="flex items-center gap-2.5">
                 <button
                   onClick={handleUploadPhoto}
-                  className="bg-[#3498db] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
+                  className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
                 >
                   <UploadCloud size={14} /> Upload Photos
                 </button>
@@ -997,11 +1001,10 @@ export default function SantoriniTripPage() {
                 <button
                   key={f}
                   onClick={() => setGalleryFilter(f)}
-                  className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-colors ${
-                    galleryFilter === f
-                      ? 'bg-[#3498db]/10 text-[#3498db]'
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-all hover:scale-[1.05] active:scale-[0.95] ${galleryFilter === f
+                      ? 'bg-[oklch(0.55_0.24_262.66)]/10 text-[oklch(0.55_0.24_262.66)]'
                       : 'bg-slate-50 text-slate-400 hover:bg-slate-100'
-                  }`}
+                    }`}
                 >
                   {f === 'All' ? 'All Photos' : f.split(' ')[0]}
                 </button>
@@ -1031,7 +1034,7 @@ export default function SantoriniTripPage() {
       {/* 4. MEMBERS TAB */}
       {activeTab === 'members' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h2 className="text-base font-extrabold text-[#191c1d]">Active Trip Space Members</h2>
@@ -1070,17 +1073,16 @@ export default function SantoriniTripPage() {
 
                   <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <span className="text-[10px] text-slate-400 font-bold uppercase">Balance Status</span>
-                    <span className={`text-xs font-black px-2.5 py-1 rounded-xl uppercase tracking-wider text-[9px] ${
-                      m.balance > 0.01 
-                        ? 'bg-green-50 text-green-600' 
-                        : m.balance < -0.01 
-                          ? 'bg-rose-50 text-rose-600' 
+                    <span className={`text-xs font-black px-2.5 py-1 rounded-xl uppercase tracking-wider text-[9px] ${m.balance > 0.01
+                        ? 'bg-green-50 text-green-600'
+                        : m.balance < -0.01
+                          ? 'bg-rose-50 text-rose-600'
                           : 'bg-slate-100 text-slate-500'
-                    }`}>
-                      {m.balance > 0.01 
-                        ? `Gets back ₹${Math.round(m.balance)}` 
-                        : m.balance < -0.01 
-                          ? `Owes ₹${Math.round(Math.abs(m.balance))}` 
+                      }`}>
+                      {m.balance > 0.01
+                        ? `Gets back ₹${Math.round(m.balance)}`
+                        : m.balance < -0.01
+                          ? `Owes ₹${Math.round(Math.abs(m.balance))}`
                           : 'Settled'}
                     </span>
                   </div>
@@ -1094,7 +1096,7 @@ export default function SantoriniTripPage() {
       {/* 5. TIMELINE TAB */}
       {activeTab === 'timeline' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-base font-extrabold text-[#191c1d]">Day-Wise Itinerary Plan</h2>
@@ -1109,27 +1111,25 @@ export default function SantoriniTripPage() {
               {timeline.map((day, idx) => (
                 <div key={idx} className="relative group">
                   {/* Timeline point */}
-                  <div className={`absolute -left-[35px] md:-left-[59px] w-6 h-6 md:w-8 md:h-8 rounded-full border-4 border-white flex items-center justify-center font-black text-[9px] md:text-xs shadow-sm shrink-0 transition-colors ${
-                    day.done ? 'bg-[#3498db] text-white' : 'bg-slate-200 text-slate-400'
-                  }`}>
+                  <div className={`absolute -left-[35px] md:-left-[59px] w-6 h-6 md:w-8 md:h-8 rounded-full border-4 border-white flex items-center justify-center font-black text-[9px] md:text-xs shadow-sm shrink-0 transition-colors ${day.done ? 'bg-[oklch(0.55_0.24_262.66)] text-white' : 'bg-slate-200 text-slate-400'
+                    }`}>
                     {day.day}
                   </div>
 
-                  <div className="bg-slate-50/60 hover:bg-slate-50 border border-slate-100 rounded-2xl p-5 transition-all">
+                  <div className="bg-white/40 hover:bg-white/60 backdrop-blur-md border border-white/50 rounded-2xl p-5 transition-all hover:shadow-lg cursor-pointer">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-black text-[#3498db] uppercase tracking-widest leading-none">
+                      <span className="text-[10px] font-black text-[oklch(0.55_0.24_262.66)] uppercase tracking-widest leading-none">
                         Day {day.day} • {day.time}
                       </span>
-                      <button 
+                      <button
                         onClick={() => {
                           const updated = timeline.map((t, i) => i === idx ? { ...t, done: !t.done } : t);
                           setTimeline(updated);
                         }}
-                        className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex items-center gap-1 transition-colors ${
-                          day.done 
-                            ? 'bg-green-50 text-green-600' 
+                        className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex items-center gap-1 transition-colors ${day.done
+                            ? 'bg-green-50 text-green-600'
                             : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
-                        }`}
+                          }`}
                       >
                         {day.done ? 'Completed' : 'Mark Visited'}
                       </button>
@@ -1150,7 +1150,7 @@ export default function SantoriniTripPage() {
       {/* 6. NOTES TAB */}
       {activeTab === 'notes' && (
         <div className="space-y-6">
-          <div className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm space-y-6">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="text-base font-extrabold text-[#191c1d]">Shared Space Notes & Checklists</h2>
@@ -1158,7 +1158,7 @@ export default function SantoriniTripPage() {
               </div>
               <button
                 onClick={() => setShowAddNote(true)}
-                className="bg-[#3498db] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
+                className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
               >
                 <Plus size={14} /> Add Note
               </button>
@@ -1170,11 +1170,10 @@ export default function SantoriniTripPage() {
                 <button
                   key={f}
                   onClick={() => setNoteFilter(f)}
-                  className={`px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-colors ${
-                    noteFilter === f
-                      ? 'bg-[#3498db]/10 text-[#3498db]'
+                  className={`px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-colors ${noteFilter === f
+                      ? 'bg-[oklch(0.55_0.24_262.66)]/10 text-[oklch(0.55_0.24_262.66)]'
                       : 'bg-slate-50 text-slate-400 hover:bg-slate-100'
-                  }`}
+                    }`}
                 >
                   {f}
                 </button>
@@ -1187,7 +1186,7 @@ export default function SantoriniTripPage() {
                 .filter(n => noteFilter === 'All' || n.category === noteFilter)
                 .map((note) => (
                   <div key={note.id} className="bg-slate-50/50 border border-slate-100 rounded-2xl p-5 relative space-y-3">
-                    <button 
+                    <button
                       onClick={() => setNotes(notes.filter(n => n.id !== note.id))}
                       className="absolute top-4 right-4 text-slate-300 hover:text-rose-500 transition-colors"
                     >
@@ -1202,7 +1201,7 @@ export default function SantoriniTripPage() {
                     <ul className="space-y-1.5">
                       {note.content.map((item, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-xs text-slate-600 font-medium">
-                          <CheckCircle2 size={12} className="text-[#3498db] shrink-0 mt-0.5" />
+                          <CheckCircle2 size={12} className="text-[oklch(0.55_0.24_262.66)] shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -1236,7 +1235,7 @@ export default function SantoriniTripPage() {
                     value={newExpTitle}
                     onChange={(e) => setNewExpTitle(e.target.value)}
                     placeholder="e.g. Dinner at BBQ Nation"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4.5 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4.5 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
                   />
                 </div>
 
@@ -1246,7 +1245,7 @@ export default function SantoriniTripPage() {
                     <select
                       value={newExpCategory}
                       onChange={(e) => setNewExpCategory(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
                     >
                       {Object.keys(CATEGORY_EMOJIS).map(cat => (
                         <option key={cat} value={cat}>{CATEGORY_EMOJIS[cat]} {cat}</option>
@@ -1262,7 +1261,7 @@ export default function SantoriniTripPage() {
                       value={newExpAmount}
                       onChange={(e) => setNewExpAmount(e.target.value)}
                       placeholder="Amount"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
                     />
                   </div>
                 </div>
@@ -1273,20 +1272,20 @@ export default function SantoriniTripPage() {
                     value={newExpNotes}
                     onChange={(e) => setNewExpNotes(e.target.value)}
                     placeholder="Additional details..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all h-20 resize-none"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all h-20 resize-none"
                   />
                 </div>
 
                 {/* Auto Capture details */}
                 <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-[10px] text-slate-400 space-y-1.5 font-bold">
-                  <div className="flex items-center gap-1.5"><Clock size={11} /> Auto-Capture: Today, {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                  <div className="flex items-center gap-1.5"><Clock size={11} /> Auto-Capture: Today, {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                   <div className="flex items-center gap-1.5"><MapPin size={11} /> Location: Santorini, Greece</div>
                   <div className="flex items-center gap-1.5"><Users size={11} /> Split: Equally among {members.length} members (₹{Math.round((parseFloat(newExpAmount) || 0) / members.length)} each)</div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#3498db] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
+                  className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
                 >
                   Save Expense
                 </button>
@@ -1318,7 +1317,7 @@ export default function SantoriniTripPage() {
                     value={newNoteTitle}
                     onChange={(e) => setNewNoteTitle(e.target.value)}
                     placeholder="e.g. Packing Essentials 🎒"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
                   />
                 </div>
 
@@ -1327,7 +1326,7 @@ export default function SantoriniTripPage() {
                   <select
                     value={newNoteCategory}
                     onChange={(e) => setNewNoteCategory(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
                   >
                     <option value="Packing">Packing List</option>
                     <option value="Info">General Info</option>
@@ -1343,13 +1342,13 @@ export default function SantoriniTripPage() {
                     value={newNoteContent}
                     onChange={(e) => setNewNoteContent(e.target.value)}
                     placeholder="Item 1&#10;Item 2&#10;Item 3"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[#3498db] focus:bg-white transition-all h-28"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all h-28"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[#3498db] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
+                  className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
                 >
                   Add Note
                 </button>
@@ -1365,7 +1364,7 @@ export default function SantoriniTripPage() {
           <div className="fixed inset-0 bg-black/40 z-30 backdrop-blur-sm" onClick={() => setShowDetailDrawer(false)} />
           <div className="fixed bottom-0 left-0 right-0 z-40 bg-white rounded-t-[2.5rem] shadow-[0_-8px_40px_rgba(0,0,0,0.15)] max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-300">
             <div className="max-w-4xl mx-auto p-8 space-y-6">
-              
+
               {/* Grab handle */}
               <div className="w-12 h-1.5 bg-slate-200 rounded-full mx-auto" />
 
@@ -1380,7 +1379,7 @@ export default function SantoriniTripPage() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => openContributionModal(selectedExpense)}
-                    className="flex items-center gap-1.5 text-xs font-bold text-[#3498db] bg-blue-50 px-3.5 py-2 rounded-xl hover:bg-blue-100 transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold text-[oklch(0.55_0.24_262.66)] bg-blue-50 px-3.5 py-2 rounded-xl hover:bg-blue-100 transition-colors"
                   >
                     <Edit2 size={13} /> Update contribution
                   </button>
@@ -1391,10 +1390,10 @@ export default function SantoriniTripPage() {
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
+
                 {/* Columns */}
                 <div className="lg:col-span-8 space-y-6">
-                  
+
                   {/* Split Summary Cards */}
                   <div className="grid grid-cols-3 gap-4">
                     <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center">
@@ -1407,7 +1406,7 @@ export default function SantoriniTripPage() {
                     </div>
                     <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center">
                       <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Split rule</p>
-                      <p className="text-sm font-bold text-[#3498db] mt-1.5 uppercase tracking-wide">Equal Split</p>
+                      <p className="text-sm font-bold text-[oklch(0.55_0.24_262.66)] mt-1.5 uppercase tracking-wide">Equal Split</p>
                     </div>
                   </div>
 
@@ -1445,17 +1444,16 @@ export default function SantoriniTripPage() {
                                   ₹{paid.toLocaleString()}
                                 </td>
                                 <td className="px-5 py-3.5 text-right">
-                                  <span className={`text-xs font-black px-2 py-0.5 rounded-lg text-[9px] ${
-                                    bal > 0.01 
-                                      ? 'bg-green-50 text-green-600' 
-                                      : bal < -0.01 
-                                        ? 'bg-rose-50 text-rose-600' 
+                                  <span className={`text-xs font-black px-2 py-0.5 rounded-lg text-[9px] ${bal > 0.01
+                                      ? 'bg-green-50 text-green-600'
+                                      : bal < -0.01
+                                        ? 'bg-rose-50 text-rose-600'
                                         : 'bg-slate-100 text-slate-400'
-                                  }`}>
-                                    {bal > 0.01 
-                                      ? `+₹${Math.round(bal)}` 
-                                      : bal < -0.01 
-                                        ? `-₹${Math.round(Math.abs(bal))}` 
+                                    }`}>
+                                    {bal > 0.01
+                                      ? `+₹${Math.round(bal)}`
+                                      : bal < -0.01
+                                        ? `-₹${Math.round(Math.abs(bal))}`
                                         : '₹0'}
                                   </span>
                                 </td>
@@ -1486,13 +1484,13 @@ export default function SantoriniTripPage() {
                     <p className="text-[10px] text-slate-400 font-medium leading-relaxed">
                       Settle this specific expense immediately using auto suggestions.
                     </p>
-                    <button 
+                    <button
                       onClick={() => openContributionModal(selectedExpense)}
-                      className="w-full bg-[#3498db] text-white py-3.5 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm active:scale-97 transition-all flex items-center justify-center gap-1.5"
+                      className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm active:scale-97 transition-all flex items-center justify-center gap-1.5"
                     >
                       <Edit2 size={13} /> Update Payments
                     </button>
-                    <button 
+                    <button
                       onClick={() => {
                         setExpenses(expenses.filter(e => e.id !== selectedExpense.id));
                         setShowDetailDrawer(false);
@@ -1546,7 +1544,7 @@ export default function SantoriniTripPage() {
                           [m.id]: e.target.value
                         })}
                         placeholder="0"
-                        className="w-full bg-white border border-slate-200 rounded-xl pl-7 pr-3 py-2 text-xs font-black focus:outline-none focus:border-[#3498db] transition-all text-right"
+                        className="w-full bg-white border border-slate-200 rounded-xl pl-7 pr-3 py-2 text-xs font-black focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] transition-all text-right"
                       />
                     </div>
                   </div>
@@ -1554,7 +1552,7 @@ export default function SantoriniTripPage() {
               </div>
 
               <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-[10px] text-slate-400 font-bold flex items-center gap-2">
-                <Info size={13} className="text-[#3498db]" />
+                <Info size={13} className="text-[oklch(0.55_0.24_262.66)]" />
                 <span>Adjusting these values updates balances and suggests settlements in real time.</span>
               </div>
 
@@ -1567,7 +1565,7 @@ export default function SantoriniTripPage() {
                 </button>
                 <button
                   onClick={handleSaveContribution}
-                  className="bg-[#3498db] text-white py-3 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm transition-all"
+                  className="bg-[oklch(0.55_0.24_262.66)] text-white py-3 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm transition-all"
                 >
                   Save Changes
                 </button>

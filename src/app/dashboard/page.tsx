@@ -14,33 +14,45 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* TOP SECTION */}
       {/* ================================================== */}
-      <section className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8 pt-8">
+      <section className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pt-8 relative z-10">
         <div>
-          <h1 className="text-3xl font-extrabold text-[#191c1d] tracking-tight mb-1">
-            Hi Sammi 👋
+          <h1 className="text-4xl font-[950] tracking-tight text-[#191c1d] mb-1">
+            Hi Sammi <span className="inline-block animate-wave">👋</span>
           </h1>
-          <p className="text-slate-500 font-medium text-sm">
+          <p className="text-[#5c5f60] font-semibold text-sm">
             Good Morning. Ready for your next adventure?
           </p>
         </div>
 
-        <div className="flex items-center gap-2 md:gap-4">
-          <div className="flex items-center gap-4 bg-[#3498db] px-6 py-3 rounded-full shadow-[0_4px_16px_rgba(52,152,219,0.3)] mr-2 md:mr-4">
-            <Sun size={24} className="text-white" />
+        <div className="flex items-center gap-3">
+          {/* Glassmorphic Weather Widget */}
+          <div className="flex items-center gap-4 bg-white/40 backdrop-blur-xl border border-white/60 px-6 py-2.5 rounded-2xl shadow-sm mr-2 hover:shadow-md transition-all">
+            <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">
+              <Sun size={22} className="animate-[spin_20s_linear_infinite]" />
+            </div>
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-blue-100 font-bold leading-none">Delhi, India</p>
-              <p className="text-base font-black text-white leading-none mt-1">32°C</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-500 font-extrabold leading-none">Delhi, India</p>
+              <p className="text-lg font-black text-[#191c1d] leading-none mt-1.5">32°C</p>
             </div>
           </div>
-          <button className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-[#191c1d] transition-colors">
-            <Search size={20} />
+
+          {/* Glassmorphic Search Button */}
+          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all">
+            <Search size={18} />
           </button>
-          <button className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-[#191c1d] transition-colors relative">
-            <Bell size={20} />
-            <span className="absolute top-2.5 right-2 w-2 h-2 bg-rose-500 rounded-full border-2 border-[#F8F9FA]" />
+
+          {/* Glassmorphic Notification Button with Pulsing Dot */}
+          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all relative">
+            <Bell size={18} />
+            <span className="absolute top-3.5 right-3.5 flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
+            </span>
           </button>
-          <button className="w-10 h-10 flex items-center justify-center text-slate-500 hover:text-[#191c1d] transition-colors">
-            <Settings size={20} />
+
+          {/* Glassmorphic Settings Button */}
+          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all">
+            <Settings size={18} />
           </button>
         </div>
       </section>
@@ -49,8 +61,11 @@ export default function DashboardPage() {
       {/* FEATURED ACTIVE TRIP */}
       {/* ================================================== */}
       <section className="space-y-4">
-        <div className="flex items-center gap-2 px-1">
-          <div className="w-2 h-2 rounded-full bg-[#3498db]"></div>
+        <div className="flex items-center gap-2.5 px-1">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
           <h2 className="text-base font-extrabold text-[#191c1d] tracking-tight">Active Now</h2>
         </div>
         <div className="relative w-full h-[460px] rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group">
@@ -64,7 +79,7 @@ export default function DashboardPage() {
 
           <div className="absolute inset-0 p-10 flex flex-col justify-between">
             <div className="flex justify-between items-start">
-              <span className="bg-[#3498db] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2">
+              <span className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 ACTIVE TRIP
               </span>
@@ -79,30 +94,30 @@ export default function DashboardPage() {
 
                 <div className="flex flex-wrap items-center gap-6 text-white/90">
                   <div className="flex items-center gap-2 font-medium">
-                    <Calendar size={18} className="text-[#3498db]" />
+                    <Calendar size={18} className="text-[oklch(0.55_0.24_262.66)]" />
                     Aug 10 - Aug 20, 2026
                   </div>
                   <div className="flex items-center gap-2 font-medium">
-                    <Users size={18} className="text-[#3498db]" />
+                    <Users size={18} className="text-[oklch(0.55_0.24_262.66)]" />
                     5 Members
                   </div>
                   <div className="flex items-center gap-2 font-medium">
-                    <Wallet size={18} className="text-[#3498db]" />
+                    <Wallet size={18} className="text-[oklch(0.55_0.24_262.66)]" />
                     ₹42,500 Budget
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2">
+                <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                   <MapIcon size={18} />
                   Open Trip
                 </button>
-                <button className="px-6 py-3.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2">
+                <button className="px-6 py-3.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                   <Calendar size={18} />
                   View Timeline
                 </button>
-                <button className="px-6 py-3.5 bg-[#3498db] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-lg transition-transform active:scale-95 flex items-center gap-2">
+                <button className="px-6 py-3.5 bg-[oklch(0.55_0.24_262.66)] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-[0_4px_20px_rgba(52,152,219,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                   <CreditCard size={18} />
                   Add Expense
                 </button>
@@ -115,10 +130,10 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* OVERALL STATS */}
       {/* ================================================== */}
-      <section className="bg-white rounded-[2rem] p-6 shadow-sm border border-slate-100">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x divide-slate-100">
+      <section className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-lg border border-white/60 hover:shadow-2xl transition-all">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x divide-black/5">
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[#3498db] mb-3">
+            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[oklch(0.55_0.24_262.66)] mb-3">
               <PlaneTakeoff size={20} />
             </div>
             <p className="text-2xl font-black text-[#191c1d]">12</p>
@@ -161,14 +176,14 @@ export default function DashboardPage() {
       <section>
         <div className="flex overflow-x-auto hide-scrollbar gap-4 pb-4 -mx-8 px-8">
           {[
-            { icon: Plus, label: 'Create Trip', color: 'bg-blue-50 text-[#3498db] border-[#3498db]/20' },
+            { icon: Plus, label: 'Create Trip', color: 'bg-blue-50 text-[oklch(0.55_0.24_262.66)] border-[oklch(0.55_0.24_262.66)]/20' },
             { icon: CreditCard, label: 'Add Expense', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
             { icon: UploadCloud, label: 'Upload Photos', color: 'bg-purple-50 text-purple-600 border-purple-200' },
             { icon: Compass, label: 'Explore Places', color: 'bg-amber-50 text-amber-600 border-amber-200' },
             { icon: Users, label: 'Invite Members', color: 'bg-rose-50 text-rose-600 border-rose-200' },
             { icon: PieChart, label: 'View Settlements', color: 'bg-indigo-50 text-indigo-600 border-indigo-200' },
           ].map((action, i) => (
-            <button key={i} className="flex-shrink-0 flex items-center gap-3 px-6 py-4 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all group">
+            <button key={i} className="flex-shrink-0 flex items-center gap-3 px-6 py-4 bg-white/60 backdrop-blur-xl border border-white/60 rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all group">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${action.color} group-hover:scale-110 transition-transform`}>
                 <action.icon size={18} />
               </div>
@@ -186,10 +201,10 @@ export default function DashboardPage() {
         <section className="lg:col-span-8 space-y-6">
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Recent Memories</h2>
-              <p className="text-sm text-slate-500 font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
+              <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recent Memories</h2>
+              <p className="text-sm text-[#444748] font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
             </div>
-            <button className="text-sm font-bold text-[#3498db] hover:text-[#2980b9] flex items-center gap-1">
+            <button className="text-sm font-bold text-[oklch(0.55_0.24_262.66)] hover:text-[#2980b9] flex items-center gap-1">
               View All <ArrowRight size={16} />
             </button>
           </div>
@@ -220,10 +235,10 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-4 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Expenses</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Expenses</h2>
           </div>
 
-          <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm h-[400px] flex flex-col">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 shadow-lg hover:shadow-2xl transition-all h-[400px] flex flex-col">
             <div className="mb-6">
               <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">Total Expenses</p>
               <h3 className="text-4xl font-black text-[#191c1d] mt-2">₹42,500</h3>
@@ -254,7 +269,7 @@ export default function DashboardPage() {
               ))}
             </div>
 
-            <button className="w-full mt-6 py-3.5 bg-blue-50 text-[#3498db] font-bold text-sm rounded-xl hover:bg-blue-100 transition-colors">
+            <button className="w-full mt-6 py-3.5 bg-blue-50 text-[oklch(0.55_0.24_262.66)] font-bold text-sm rounded-xl hover:bg-blue-100 transition-colors">
               View Detailed Split
             </button>
           </div>
@@ -266,7 +281,7 @@ export default function DashboardPage() {
       {/* ================================================== */}
       <section className="space-y-6">
         <div className="flex items-end justify-between">
-          <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Explore Destinations</h2>
+          <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Explore Destinations</h2>
           <div className="flex gap-2">
             <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-50">
               <ChevronRight size={20} className="rotate-180" />
@@ -311,7 +326,7 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-7 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Upcoming Trips</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Upcoming Trips</h2>
           </div>
 
           <div className="space-y-4">
@@ -320,7 +335,7 @@ export default function DashboardPage() {
               { name: 'Kashmir Escape', date: 'Dec 01 - 10, 2026', img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=400&q=80', members: 2, budget: '₹60,000' },
               { name: 'Thailand Tour', date: 'Feb 14 - 24, 2027', img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80', members: 6, budget: '₹1,20,000' },
             ].map((trip, i) => (
-              <div key={i} className="bg-white p-4 rounded-[2rem] border border-slate-100 shadow-sm flex items-center gap-6 group hover:shadow-md transition-shadow cursor-pointer">
+              <div key={i} className="bg-white/60 backdrop-blur-xl p-4 rounded-[2rem] border border-white/60 shadow-lg flex items-center gap-6 group hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
                 <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
                   <img src={trip.img} alt={trip.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
@@ -335,7 +350,7 @@ export default function DashboardPage() {
                   <p className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Budget</p>
                   <p className="font-black text-[#191c1d]">{trip.budget}</p>
                 </div>
-                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[#3498db] group-hover:border-[#3498db] group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:border-[oklch(0.55_0.24_262.66)] group-hover:text-white transition-colors">
                   <ChevronRight size={20} />
                 </div>
               </div>
@@ -348,16 +363,16 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-5 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Recent Activity</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recent Activity</h2>
           </div>
 
-          <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm">
+          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-100">
               {[
                 { user: 'R', name: 'Rahul', action: 'uploaded 15 photos', time: '2h ago', icon: ImageIcon, color: 'bg-purple-100 text-purple-600' },
                 { user: 'A', name: 'Ali', action: 'added Hotel Expense ₹8,000', time: '5h ago', icon: CreditCard, color: 'bg-rose-100 text-rose-600' },
                 { user: 'Am', name: 'Aman', action: 'joined the trip', time: '1d ago', icon: Users, color: 'bg-emerald-100 text-emerald-600' },
-                { user: 'S', name: 'Sammi', action: 'created itinerary', time: '2d ago', icon: Calendar, color: 'bg-blue-100 text-[#3498db]' },
+                { user: 'S', name: 'Sammi', action: 'created itinerary', time: '2d ago', icon: Calendar, color: 'bg-blue-100 text-[oklch(0.55_0.24_262.66)]' },
               ].map((act, i) => (
                 <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                   {/* Marker */}
@@ -389,10 +404,10 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Kerala Weather</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Kerala Weather</h2>
           </div>
 
-          <div className="bg-gradient-to-br from-[#3498db] to-[#2980b9] rounded-[2rem] p-8 text-white shadow-lg relative overflow-hidden h-[240px] flex flex-col justify-between">
+          <div className="bg-gradient-to-br from-[oklch(0.55_0.24_262.66)] to-[#2980b9] rounded-[2rem] p-8 text-white shadow-lg relative overflow-hidden h-[240px] flex flex-col justify-between">
             <CloudSun size={120} className="absolute -top-4 -right-8 text-white/20" />
 
             <div className="flex justify-between items-start z-10">
@@ -426,7 +441,7 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-extrabold text-[#191c1d] tracking-tight">Recommended</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recommended</h2>
           </div>
 
           <div className="grid grid-cols-2 gap-4 h-[240px]">

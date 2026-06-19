@@ -113,26 +113,26 @@ export default function TripDetailPage() {
           <h2 className="text-lg font-extrabold text-[#191c1d]">Trip Overview</h2>
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+            <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
               <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Total Budget</p>
-              <p className="text-xl font-black text-[#3498db]">₹{trip.budget.toLocaleString()}</p>
+              <p className="text-xl font-black text-[oklch(0.55_0.24_262.66)]">₹{trip.budget.toLocaleString()}</p>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+            <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
               <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Trip Progress</p>
               <p className="text-xl font-black text-[#191c1d]">Day {trip.progress}/{trip.totalDays}</p>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+            <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
               <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Members</p>
               <p className="text-xl font-black text-[#191c1d]">{trip.members.length} Active</p>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
+            <div className="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
               <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Media</p>
               <p className="text-xl font-black text-[#191c1d]">{trip.gallery.length * 28} Photos</p>
             </div>
           </div>
 
           {/* Action Buttons */}
-          <button className="w-full flex items-center justify-center gap-2 bg-[#3498db] text-white py-3.5 rounded-2xl font-bold text-sm shadow-[0_4px_16px_rgba(52,152,219,0.3)] hover:bg-[#2980b9] active:scale-95 transition-all">
+          <button className="w-full flex items-center justify-center gap-2 bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-2xl font-bold text-sm shadow-[0_4px_16px_rgba(52,152,219,0.3)] hover:bg-[#2980b9] active:scale-95 transition-all">
             <Plus size={18} /> Add Expense
           </button>
           <div className="grid grid-cols-2 gap-3">
@@ -150,7 +150,7 @@ export default function TripDetailPage() {
       <section className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-lg font-extrabold text-[#191c1d]">Trip Members</h2>
-          <button className="text-xs font-bold text-[#3498db] hover:underline">View All</button>
+          <button className="text-xs font-bold text-[oklch(0.55_0.24_262.66)] hover:underline">View All</button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {trip.members.map((m, i) => (
@@ -184,11 +184,11 @@ export default function TripDetailPage() {
             {trip.itinerary.map((day, i) => (
               <div key={i} className="flex gap-4">
                 <div className="flex flex-col items-center">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm shrink-0 ${day.done ? 'bg-[#3498db] text-white' : 'bg-slate-100 text-slate-400'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm shrink-0 ${day.done ? 'bg-[oklch(0.55_0.24_262.66)] text-white' : 'bg-slate-100 text-slate-400'}`}>
                     {day.day}
                   </div>
                   {i < trip.itinerary.length - 1 && (
-                    <div className={`w-0.5 flex-1 mt-2 ${day.done ? 'bg-[#3498db]/30' : 'bg-slate-100'}`} style={{ minHeight: '24px' }} />
+                    <div className={`w-0.5 flex-1 mt-2 ${day.done ? 'bg-[oklch(0.55_0.24_262.66)]/30' : 'bg-slate-100'}`} style={{ minHeight: '24px' }} />
                   )}
                 </div>
                 <div className="pb-4">
@@ -255,7 +255,7 @@ export default function TripDetailPage() {
                   <ArrowRight size={14} className="text-slate-300 shrink-0" />
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${s.toColor}`}>{s.toAvatar}</div>
                   <span className="text-xs font-bold text-slate-500">{s.to}</span>
-                  <span className="ml-auto text-sm font-black text-[#3498db]">₹{s.amount.toLocaleString()}</span>
+                  <span className="ml-auto text-sm font-black text-[oklch(0.55_0.24_262.66)]">₹{s.amount.toLocaleString()}</span>
                 </div>
               ))}
             </div>
@@ -275,7 +275,7 @@ export default function TripDetailPage() {
                 <button
                   key={f}
                   onClick={() => setGalleryFilter(f)}
-                  className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors ${galleryFilter === f ? 'bg-[#3498db] text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
+                  className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors ${galleryFilter === f ? 'bg-[oklch(0.55_0.24_262.66)] text-white' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}
                 >
                   {f} {f === 'All' ? `(${trip.gallery.length * 28})` : f === 'Sammi' ? '(42)' : '(16)'}
                 </button>
@@ -304,7 +304,7 @@ export default function TripDetailPage() {
                 className="w-full h-full object-cover opacity-40"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 bg-[#3498db] rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-8 h-8 bg-[oklch(0.55_0.24_262.66)] rounded-full flex items-center justify-center shadow-lg">
                   <MapPin size={16} className="text-white" />
                 </div>
               </div>

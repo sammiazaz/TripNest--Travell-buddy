@@ -13,14 +13,14 @@ export default function LoginPage() {
         }}
       />
 
-      <Link href="/" className="absolute top-8 left-8 text-2xl font-black tracking-tighter text-[#191c1d] hover:text-[#3498db] transition-colors z-10">
+      <Link href="/" className="absolute top-8 left-8 text-2xl font-black tracking-tighter text-[#191c1d] hover:text-[oklch(0.55_0.24_262.66)] transition-colors z-10">
         TripNest
       </Link>
 
       <div className="z-10 w-full max-w-md p-8">
         <div className="bg-white/60 backdrop-blur-xl border border-white/50 p-10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] text-center relative overflow-hidden">
           {/* Decorative element */}
-          <div className="absolute -top-16 -right-16 w-32 h-32 bg-[#3498db]/20 rounded-full blur-2xl" />
+          <div className="absolute -top-16 -right-16 w-32 h-32 bg-[oklch(0.55_0.24_262.66)]/20 rounded-full blur-2xl" />
           
           <h1 className="text-3xl font-extrabold mb-2 tracking-tight">Welcome back</h1>
           <p className="text-slate-500 mb-8 font-medium">Please enter your details to sign in.</p>
@@ -35,7 +35,7 @@ export default function LoginPage() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3498db]/50 focus:border-[#3498db] transition-all placeholder:text-slate-400 text-sm font-medium"
+                  className="w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[oklch(0.55_0.24_262.66)]/50 focus:border-[oklch(0.55_0.24_262.66)] transition-all placeholder:text-slate-400 text-sm font-medium"
                 />
               </div>
             </div>
@@ -49,11 +49,11 @@ export default function LoginPage() {
                 <input
                   type="password"
                   placeholder="••••••••"
-                  className="w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3498db]/50 focus:border-[#3498db] transition-all placeholder:text-slate-400 text-sm font-medium"
+                  className="w-full pl-11 pr-4 py-3 bg-white/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[oklch(0.55_0.24_262.66)]/50 focus:border-[oklch(0.55_0.24_262.66)] transition-all placeholder:text-slate-400 text-sm font-medium"
                 />
               </div>
               <div className="flex justify-end mt-2">
-                <Link href="#" className="text-xs font-bold text-[#3498db] hover:text-[#2980b9] transition-colors">
+                <Link href="#" className="text-xs font-bold text-[oklch(0.55_0.24_262.66)] hover:text-[#2980b9] transition-colors">
                   Forgot password?
                 </Link>
               </div>
@@ -61,7 +61,7 @@ export default function LoginPage() {
 
             <Link
               href="/dashboard"
-              className="w-full py-3.5 mt-6 bg-[#3498db] text-white font-bold text-sm rounded-xl hover:bg-[#2980b9] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(52,152,219,0.3)]"
+              className="w-full py-3.5 mt-6 bg-[oklch(0.55_0.24_262.66)] text-white font-bold text-sm rounded-xl hover:bg-[#2980b9] active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(52,152,219,0.3)]"
             >
               Sign In
               <ArrowRight size={18} />
@@ -70,7 +70,7 @@ export default function LoginPage() {
 
           <p className="mt-8 text-sm text-slate-500 font-medium">
             Don't have an account?{' '}
-            <Link href="/signup" className="font-bold text-[#191c1d] hover:text-[#3498db] transition-colors">
+            <Link href="/signup" className="font-bold text-[#191c1d] hover:text-[oklch(0.55_0.24_262.66)] transition-colors">
               Sign up
             </Link>
           </p>
