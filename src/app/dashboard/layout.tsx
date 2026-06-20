@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="flex h-[125vh] bg-[#F8F9FA] text-[#191c1d] font-sans relative overflow-hidden">
       {/* Ambient background from landing page */}
       <div className="fixed inset-0 z-0 opacity-20 pointer-events-none" style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJyMjy_PVttFGS5yqT-WyUxHGg-xvAAyfcfcvEMk-115EwWxYivfrx9V6DkVhV-1SFM8Z0bu0W9XBj4zVvzxcWVtCrHjq9-OKNJkNvuA9IxTIOCBZICc48Bh6iBf7H1xxBQLHzBcupGJTVIEnwDfzssIsnXHDpyR-A2DLcuV4cks66kZQSGO-n5-rHJD2-cs2naw-g6bhXy5NpYm37yoyhE8nqNLfqiiEdri72WclvmH4kxuWlp-9o4HmuSCJxPJlGPMy0pSMKTlPf')`, backgroundSize: 'cover', backgroundPosition: 'center', filter: 'blur(40px) brightness(1.05)' }} />
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: `radial-gradient(circle at 10% 50%, rgba(2, 251, 255, 0.20) 0%, transparent 60%), radial-gradient(circle at 70% 20%, rgba(253, 139, 0, 0.20) 0%, transparent 60%)` }} />
+      <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: `radial-gradient(circle at 10% 50%, rgba(2, 251, 255, 0.10) 0%, transparent 60%), radial-gradient(circle at 70% 20%, rgba(253, 139, 0, 0.10) 0%, transparent 60%)` }} />
 
       {/* Sidebar */}
       <aside className="w-[307px] m-5 mr-0 h-[calc(125vh-50px)] rounded-[2rem] bg-white/60 backdrop-blur-2xl border border-white/60 flex flex-col justify-between hidden md:flex relative z-10 shadow-xl overflow-hidden">
