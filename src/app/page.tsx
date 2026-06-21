@@ -1,410 +1,308 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Users,
-  Wallet,
-  Sparkles,
-  CloudOff,
-  MapPin,
-  Star,
-} from 'lucide-react';  
- 
-export default function LandingPage() { 
+import { Search, MapPin, Users, Globe, Camera, ArrowRight, Star, Heart, MessageSquare } from 'lucide-react';
+import './landing.css';
+
+// Social Icons
+const InstagramIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
+
+const TwitterIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+  </svg>
+);
+
+const FacebookIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+);
+
+const NAV_LINKS = ['Home', 'Explore', 'About Us', 'Contact'];
+
+export default function LandingPage() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      setScrolled(scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Fallback for body scrolling
+    document.body.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.body.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-[#191c1d] font-sans overflow-x-hidden">
-      {/* Blurred hero background */}
-      <div
-        className="fixed inset-0 z-0 opacity-15 pointer-events-none"
-        style={{
-          backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJyMjy_PVttFGS5yqT-WyUxHGg-xvAAyfcfcvEMk-115EwWxYivfrx9V6DkVhV-1SFM8Z0bu0W9XBj4zVvzxcWVtCrHjq9-OKNJkNvuA9IxTIOCBZICc48Bh6iBf7H1xxBQLHzBcupGJTVIEnwDfzssIsnXHDpyR-A2DLcuV4cks66kZQSGO-n5-rHJD2-cs2naw-g6bhXy5NpYm37yoyhE8nqNLfqiiEdri72WclvmH4kxuWlp-9o4HmuSCJxPJlGPMy0pSMKTlPf')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'blur(40px) brightness(1.05)',
-        }}
-      />
+    <div className="landing-root">
+      {/* ── Navbar ── */}
+      <nav className={`landing-nav ${scrolled ? 'scrolled' : ''}`}>
+        <Link href="/" className="landing-logo" style={{ textDecoration: 'none' }}>
+          <h1 style={{
+            fontFamily: '"Gilroy", sans-serif',
+            fontSize: '1.75rem',
+            fontWeight: 500,
+            color: 'white',
+            margin: 0,
+            transition: 'color 0.3s'
+          }}>
+            Tripnest
+          </h1>
+        </Link>
 
-      {/* Mesh gradient overlay */}
-      <div
-        className="fixed inset-0 z-0 pointer-events-none"
-        style={{
-          background: `radial-gradient(circle at 20% 30%, rgba(71,234,237,0.1) 0%, transparent 40%),
-                       radial-gradient(circle at 80% 70%, rgba(253,139,0,0.05) 0%, transparent 40%)`,
-        }}
-      />
+        <ul className="landing-navlinks">
+          {NAV_LINKS.map((l) => (
+            <li key={l}>
+              <Link href={l === 'Home' ? '/' : l === 'Explore' ? '/dashboard' : '#'} className="landing-navlink">
+                {l}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      {/* ─── NAVBAR ─── */}
-      <nav className="fixed top-0 w-full z-50 border-b border-black/5 shadow-sm"
-        style={{ background: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(20px)' }}>
-        <div className="max-w-[1280px] mx-auto px-8 h-20 flex items-center justify-end relative">
-          <Link href="/" className="absolute left-1/2 -translate-x-1/2 text-2xl font-black tracking-tighter text-[#191c1d] hover:text-blue-700 transition-colors">TripNest</Link>
-          <div className="flex items-center gap-2">
-            <Link href="/login" className="px-5 py-2.5 text-[#444748] hover:text-[#191c1d] transition-all text-sm font-medium">
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="px-5 py-2.5 bg-[oklch(0.55_0.24_262.66)] text-white font-bold rounded-lg text-sm hover:scale-105 active:scale-95 transition-transform"
-              style={{ boxShadow: '0 4px 20px rgba(52,152,219,0.3)' }}
-            >
-              Start Your Trip Space
-            </Link>
-          </div>
+        <div className="landing-nav-right">
+          <button className="landing-search-btn" aria-label="Search"><Search size={18} /></button>
+          <a href="#" className="landing-icon-btn" aria-label="Instagram"><InstagramIcon /></a>
+          <a href="#" className="landing-icon-btn" aria-label="Twitter"><TwitterIcon /></a>
+          <a href="#" className="landing-icon-btn" aria-label="Facebook"><FacebookIcon /></a>
         </div>
       </nav>
 
-      <main className="relative pt-20">
-        {/* ─── HERO ─── */}
-        <section className="max-w-[1280px] mx-auto px-8 pt-20 pb-24">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            {/* Left copy */}
-            <div className="lg:w-1/2 z-10">
-              <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#954a00] mb-3 block">
-                Next-Gen Travel Planning
-              </span>
-              <h1 className="text-[clamp(48px,6vw,84px)] font-[900] leading-[0.95] tracking-[-0.06em] text-[#191c1d] mb-8">
-                Your next adventure, <span className="text-blue-600">perfectly nested.</span>
-              </h1>
-              <p className="text-[20px] leading-relaxed text-slate-500 max-w-xl mb-12 font-medium">
-                The all-in-one collaborative space to plan itineraries, split expenses, and store memories with your squad.
-              </p>
-              <Link
-                href="/signup"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-[oklch(0.55_0.24_262.66)] text-white font-bold text-lg rounded-xl hover:scale-105 active:scale-95 transition-transform"
-                style={{ boxShadow: '0 10px 40px rgba(52,152,219,0.3)' }}
-              >
-                Start Your Trip Space
-                <ArrowRight size={22} />
-              </Link>
-            </div>
+      {/* ── Hero Section (100vh) ── */}
+      <section className="hero-section">
+        <div className="hero-bg">
+          {/* User's new custom background video */}
+          <video autoPlay loop muted playsInline src="/hero-bg-2.mp4" />
+        </div>
+        <div className="hero-overlay" />
 
-            {/* Right hero card */}
-            <div
-              className="lg:w-1/2 w-full h-[560px] rounded-3xl overflow-hidden relative shadow-2xl border border-white/50"
-              style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)' }}
-            >
-              {/* Map background */}
-              <div className="absolute inset-0 opacity-40 blur-[1px]">
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpLQgvxQjkKV_b6J8zJyEQ5YJ6v1Ssj4YyY24-h5OnoYZ-nRpHbewUxvhx62Ew0VMD0t6phxilWosdS5XO_fdzzhUW3re96KGptQ6k3niSwVrw8iCEtZcYp7IXANTwGuQQ_ToJqij5EEUL8CwsC_y_2YrLONArW5SZnS0oaq3YKY2RivHIVNSbFjNaMfM6t_YF4uYGqnMz3-IxfrKer95MCsdREWOBWm1gF5PdQ98KIDNX3e6HCbc3yBKQ3pI6VXjSd5y510jsYfUj"
-                  alt="Map of Europe"
-                  className="w-full h-full object-cover grayscale"
-                />
-              </div>
-
-              {/* SVG threads */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 560">
-                <path d="M300,280 L200,140" fill="none" stroke="#00ced1" strokeWidth="2.5" strokeDasharray="10" style={{ filter: 'drop-shadow(0 0 4px rgba(0,105,107,0.3))' }} />
-                <path d="M300,280 L450,200" fill="none" stroke="#fd8b00" strokeWidth="2.5" strokeDasharray="10" style={{ filter: 'drop-shadow(0 0 4px rgba(253,139,0,0.3))' }} />
-                <path d="M300,280 L380,460" fill="none" stroke="#00ced1" strokeWidth="2.5" strokeDasharray="10" style={{ filter: 'drop-shadow(0 0 4px rgba(0,105,107,0.3))' }} />
-              </svg>
-
-              {/* Avatar */}
-              <div className="absolute top-[260px] left-[272px] z-10">
-                <div
-                  className="w-10 h-10 rounded-full border-2 border-white overflow-hidden"
-                  style={{ boxShadow: '0 0 0 4px rgba(71,234,237,0.4), 0 0 20px rgba(71,234,237,0.6)' }}
-                >
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJPdkIGrpHGVUiO6fpmK2pxzf7Yejx4RexOdC9-uJAS8ooCt6tnrjKK_9SWAO2vhkhGZVwS6ZhDieVomviyzxgimt371PO1kD7bR7GTt45p52o0OJ8TdWxLLWL1tWwwS1ciMnJwj1cr9NCrBqEItKiTq9bvdQ5cgWSQHSq9E8ENB1z4_KGPKHp5_3VXulU-mf-MkhByY-6ndvFgzdKZa6KTM9CpyyjHajArPmyQfRBVdHlzWoJvgu-dgdrh3c--8gysrDPVKkW_3lD"
-                    alt="Sarah"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold bg-[#00696b] px-2 py-0.5 rounded text-white shadow-md whitespace-nowrap">
-                  Sarah
-                </span>
-              </div>
-
-              {/* Gallery float card */}
-              <div
-                className="absolute top-[70px] left-[32px] p-3 rounded-xl w-48 shadow-xl border border-white/50 animate-pulse z-10"
-                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(12px)', borderTop: '0.5px solid rgba(255,255,255,0.8)' }}
-              >
-                <div className="h-24 w-full rounded-lg overflow-hidden mb-3 shadow-inner">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJyMjy_PVttFGS5yqT-WyUxHGg-xvAAyfcfcvEMk-115EwWxYivfrx9V6DkVhV-1SFM8Z0bu0W9XBj4zVvzxcWVtCrHjq9-OKNJkNvuA9IxTIOCBZICc48Bh6iBf7H1xxBQLHzBcupGJTVIEnwDfzssIsnXHDpyR-A2DLcuV4cks66kZQSGO-n5-rHJD2-cs2naw-g6bhXy5NpYm37yoyhE8nqNLfqiiEdri72WclvmH4kxuWlp-9o4HmuSCJxPJlGPMy0pSMKTlPf"
-                    alt="Amalfi Coast"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-semibold text-[#444748]">Amalfi, Italy</span>
-                  <span className="text-[10px] font-bold text-[#00696b]">2s ago</span>
-                </div>
-              </div>
-
-              {/* Poll float card */}
-              <div
-                className="absolute top-[150px] right-[32px] p-4 rounded-xl w-56 shadow-xl border border-white/50 z-10"
-                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(12px)', borderTop: '0.5px solid rgba(255,255,255,0.8)' }}
-              >
-                <h4 className="font-bold text-sm text-[#191c1d] mb-3">Should we hike tomorrow?</h4>
-                <div className="space-y-2">
-                  <div className="h-8 rounded-lg flex items-center px-3 justify-between border border-[#00696b]/20 bg-[#00696b]/10">
-                    <span className="text-xs text-[#00696b] font-semibold">Yes, sunrise hike</span>
-                    <span className="text-xs font-bold text-[#00696b]">65%</span>
-                  </div>
-                  <div className="h-8 rounded-lg flex items-center px-3 justify-between border border-black/5 bg-black/5">
-                    <span className="text-xs text-[#444748]">Sleep in</span>
-                    <span className="text-xs font-bold text-[#444748]">35%</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Expense float card */}
-              <div
-                className="absolute bottom-[70px] right-[64px] p-3 rounded-xl flex items-center gap-3 shadow-xl border border-white/50 z-10"
-                style={{ background: 'rgba(255,255,255,0.6)', backdropFilter: 'blur(12px)', borderTop: '0.5px solid rgba(255,255,255,0.8)' }}
-              >
-                <div className="w-8 h-8 rounded-full bg-[#954a00]/10 flex items-center justify-center text-[#954a00]">
-                  <Wallet size={16} />
-                </div>
-                <div>
-                  <p className="text-[10px] font-semibold text-[#444748]">Liam paid for</p>
-                  <p className="text-sm font-bold text-[#191c1d]">€12.50 for Gelato</p>
-                </div>
-              </div>
-            </div>
+        <div className="hero-content">
+          <span className="hero-label">Discover The World</span>
+          <h1 className="hero-h1">Travel Better,<br />Together.</h1>
+          <p className="hero-desc">
+            Plan trips with friends, organize memories, and discover amazing destinations around the globe.
+          </p>
+          <div className="hero-buttons">
+            <Link href="/dashboard" className="btn-primary">Start Your Journey</Link>
+            <Link href="#explore" className="btn-secondary">Explore Destinations</Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ─── FEATURE BENTO GRID ─── */}
-        <section id="features" className="max-w-[1280px] mx-auto px-8 pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:h-[600px]">
-            {/* Big collaborative card */}
-            <div
-              className="md:col-span-8 rounded-[2rem] p-10 flex flex-col justify-end relative overflow-hidden group shadow-lg border border-white/50"
-              style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)' }}
-            >
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNbAmQE9K6tlW9cwFHC1Pnej3TXCKt3RQg0fNVDej134bX6kDcTAHBF_hG05SmiQDYLURYgM0KTkUPP4qlCSIosqttP04H0sy_qe3mXnhuaP6pi9lIf31N2NJmpdkFxZkTpg2lYJihnGhKPeUa6CwZjrtSkKRu4rK1C_d3itSiQkdbE630NDybVyzMenDyjcXsKZitW5oaPVMltD7YNmlbn0lCCNMCfm0XEGFTe2LjPz50UewO1fB2stHAciWz4WEwS4v6YMf5lXVp"
-                alt="Collaborative Itineraries"
-                className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="z-10">
-                <h3 className="text-[32px] font-bold leading-[1.3] tracking-[-0.01em] text-[#191c1d] mb-3">Collaborative Itineraries</h3>
-                <p className="text-[#444748] max-w-lg mb-5">Edit plans simultaneously with your travel partners. Drag, drop, and decide together in one seamless canvas.</p>
-                <Link href="/signup" className="text-[#00696b] flex items-center gap-1 font-bold hover:gap-3 transition-all">
-                  Explore tools <ArrowRight size={16} />
-                </Link>
+      {/* ── 1. Popular Destinations ── */}
+      <section id="explore" className="section">
+        <div className="section-header">
+          <h2 className="section-title">Popular Destinations</h2>
+          <p className="section-subtitle">Explore the world's most sought-after locations for your next unforgettable adventure.</p>
+        </div>
+        <div className="destinations-grid">
+          {[
+            { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80' },
+            { name: 'Santorini', img: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&w=800&q=80' },
+            { name: 'Maldives', img: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80' },
+            { name: 'Switzerland', img: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=800&q=80' },
+            { name: 'Tokyo', img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80' },
+            { name: 'Dubai', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80' },
+          ].map((dest) => (
+            <div key={dest.name} className="destination-card">
+              <img src={dest.img} alt={dest.name} loading="lazy" />
+              <div className="destination-overlay">
+                <h3 className="destination-name">{dest.name}</h3>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Smart suggestions card */}
-            <div
-              className="md:col-span-4 rounded-[2rem] p-10 bg-[#00696b]/5 border border-[#00696b]/20 flex flex-col justify-between shadow-lg"
-              style={{ backdropFilter: 'blur(20px)' }}
-            >
-              <Sparkles size={40} className="text-[#00696b]" />
-              <div>
-                <h3 className="text-[32px] font-bold leading-[1.3] tracking-[-0.01em] text-[#191c1d] mb-3">Smart Suggestions</h3>
-                <p className="text-[#444748]">AI-powered recommendations based on your group&apos;s unique travel style and previous favorites.</p>
-              </div>
+      {/* ── 2. Why TripNest ── */}
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Why TripNest</h2>
+          <p className="section-subtitle">Everything you need to plan the perfect group trip, all in one place.</p>
+        </div>
+        <div className="why-grid">
+          <div className="why-item">
+            <div className="why-icon"><Users size={28} /></div>
+            <h3 className="why-title">Plan Together</h3>
+            <p className="why-desc">Invite your friends, vote on itineraries, and split expenses seamlessly.</p>
+          </div>
+          <div className="why-item">
+            <div className="why-icon"><Camera size={28} /></div>
+            <h3 className="why-title">Share Memories</h3>
+            <p className="why-desc">Create shared photo albums so everyone has access to the trip's best moments.</p>
+          </div>
+          <div className="why-item">
+            <div className="why-icon"><Globe size={28} /></div>
+            <h3 className="why-title">Discover Places</h3>
+            <p className="why-desc">Find hidden gems and highly-rated local experiences curated by the community.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 3. Travel Memories Gallery ── */}
+      <section className="gallery-section">
+        <div className="section-header">
+          <h2 className="section-title">Travel Memories</h2>
+          <p className="section-subtitle">A glimpse into the amazing journeys of our global community.</p>
+        </div>
+        <div className="gallery-grid">
+          {[
+            'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=600&q=80',
+          ].map((src, i) => (
+            <div key={i} className="gallery-item">
+              <img src={src} alt="Travel memory" loading="lazy" />
             </div>
+          ))}
+        </div>
+      </section>
 
-            {/* Unlimited sync card */}
-            <div
-              className="md:col-span-4 rounded-[2rem] p-10 flex flex-col justify-between shadow-lg border border-white/50"
-              style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)' }}
-            >
-              <div className="flex -space-x-3">
-                {[
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuDc2OnBTl_KFBSAuaTRncwuTQgwt83sEU-gIZHOGydsWDMyuu52Y6IJinn5gHZT3ggpnGmdSoQFCSz8f4AenUr8Z8ak2oTe27-IwD6CdKgTcn2DZiYAbAbTpMaeMypb5m8TpUfEeho9PXIEISNWZRvKK8hqsX2yCAFm4BcUOyZybFuzTq6gKcvEHT4h4NBC6290O4wdV1PVau-CJNzIsLDNvfFFpTFVFeypCR-f9E5usYAVXW_YvhUvFr3rwdhc9HAAVCx1i_DBgICz',
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuAVWw6BgWVASzyBJ7xaQ4j2e5YemCwbLO1a68vn1fR0GmQ3DXTDBIxnrz9tp7_dH0OQrEkaWypP9MNpV0iuPj14jxi-ckF6aKbdXgc-5yWXbY_vEooku6MSXsZkgOAdbVeBACQ5dWF7VBl6kZd93eAeQi6JVmStJbMKa4FRoxH__ykIfgteb5zgJfC1i7GMGZqH3GqY_zddj4EJoEgFipxaBtqx24H-MoemRCCPsq5QnIR8UAPHzKPTdz0lYgAXmV46zIcC4adom6nZ',
-                ].map((src, i) => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-white overflow-hidden shadow-sm bg-gray-200">
-                    <img src={src} alt="traveler" className="w-full h-full object-cover" />
-                  </div>
-                ))}
-                <div className="w-10 h-10 rounded-full border-2 border-white bg-[#00696b]/20 flex items-center justify-center text-[10px] text-[#00696b] font-bold shadow-sm">+12</div>
-              </div>
-              <div>
-                <h3 className="text-[32px] font-bold leading-[1.3] tracking-[-0.01em] text-[#191c1d] mb-3">Unlimited Sync</h3>
-                <p className="text-[#444748]">Invite the whole family or the entire marketing team.</p>
-              </div>
+      {/* ── 4. Community Section ── */}
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Community Driven</h2>
+          <p className="section-subtitle">Connect with fellow travelers and unlock a world of local insights.</p>
+        </div>
+        <div className="why-grid">
+          <div className="why-item">
+            <div className="why-icon" style={{ background: '#38bdf8' }}><MessageSquare size={28} /></div>
+            <h3 className="why-title">Travel Stories</h3>
+            <p className="why-desc">Read inspiring tales from real trips around the globe.</p>
+          </div>
+          <div className="why-item">
+            <div className="why-icon" style={{ background: '#10b981' }}><Users size={28} /></div>
+            <h3 className="why-title">Discussions</h3>
+            <p className="why-desc">Join active forums to ask questions and share advice.</p>
+          </div>
+          <div className="why-item">
+            <div className="why-icon" style={{ background: '#f59e0b' }}><MapPin size={28} /></div>
+            <h3 className="why-title">Local Guides</h3>
+            <p className="why-desc">Discover exclusive itineraries crafted by passionate locals.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 5. Statistics ── */}
+      <section className="stats-section">
+        <div>
+          <div className="stat-number">10k+</div>
+          <div className="stat-label">Trips Created</div>
+        </div>
+        <div>
+          <div className="stat-number">50k+</div>
+          <div className="stat-label">Travelers</div>
+        </div>
+        <div>
+          <div className="stat-number">120+</div>
+          <div className="stat-label">Countries Explored</div>
+        </div>
+        <div>
+          <div className="stat-number">1M+</div>
+          <div className="stat-label">Photos Shared</div>
+        </div>
+      </section>
+
+      {/* ── 6. Testimonials ── */}
+      <section className="section">
+        <div className="section-header">
+          <h2 className="section-title">Loved by Travelers</h2>
+          <p className="section-subtitle">See what our community has to say about their TripNest experience.</p>
+        </div>
+        <div className="why-grid">
+          <div className="why-item" style={{ background: '#fff', border: '1px solid #e5e7eb', textAlign: 'left' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', color: '#f59e0b' }}>
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
             </div>
-
-            {/* Offline card */}
-            <div
-              className="md:col-span-8 rounded-[2rem] p-10 flex items-center gap-10 shadow-lg border border-white/50"
-              style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)' }}
-            >
-              <div className="w-1/4 aspect-square rounded-2xl bg-[#954a00]/5 flex items-center justify-center border border-[#954a00]/10 shrink-0">
-                <CloudOff size={56} className="text-[#954a00]" />
-              </div>
-              <div>
-                <h3 className="text-[32px] font-bold leading-[1.3] tracking-[-0.01em] text-[#191c1d] mb-3">Offline Access</h3>
-                <p className="text-[#444748] max-w-md">No signal in the mountains? No problem. TripNest works offline and syncs as soon as you&apos;re back on the grid.</p>
-              </div>
+            <p className="why-desc" style={{ fontStyle: 'italic', marginBottom: '1.5rem' }}>"TripNest made organizing our Europe trip so effortless. No more chaotic group chats!"</p>
+            <div style={{ fontWeight: 600 }}>— Sarah J.</div>
+          </div>
+          <div className="why-item" style={{ background: '#fff', border: '1px solid #e5e7eb', textAlign: 'left' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', color: '#f59e0b' }}>
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
             </div>
+            <p className="why-desc" style={{ fontStyle: 'italic', marginBottom: '1.5rem' }}>"The ability to share expenses and vote on itineraries saved our friendship."</p>
+            <div style={{ fontWeight: 600 }}>— Michael T.</div>
           </div>
-        </section>
-
-        {/* ─── FEATURED DESTINATIONS ─── */}
-        <section className="max-w-[1280px] mx-auto px-8 pb-32">
-          <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
-            <div className="max-w-2xl">
-              <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#00696b] mb-3 block">
-                Get Inspired
-              </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#191c1d]">
-                Trending Nesting Spots
-              </h2>
+          <div className="why-item" style={{ background: '#fff', border: '1px solid #e5e7eb', textAlign: 'left' }}>
+            <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', color: '#f59e0b' }}>
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
+              <Star size={18} fill="currentColor" />
             </div>
-            <Link href="/signup" className="group flex items-center gap-2 font-bold text-[#191c1d]">
-              Explore all destinations
-              <div className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:text-white transition-all">
-                <ArrowRight size={20} />
-              </div>
-            </Link>
+            <p className="why-desc" style={{ fontStyle: 'italic', marginBottom: '1.5rem' }}>"I discovered so many hidden gems in Kyoto thanks to the local guides on TripNest."</p>
+            <div style={{ fontWeight: 600 }}>— Emma L.</div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { name: 'Kyoto, Japan', img: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800', tags: ['Culture', 'Serene'] },
-              { name: 'Santorini, Greece', img: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80&w=800', tags: ['Romantic', 'Views'] },
-              { name: 'Reykjavik, Iceland', img: 'https://images.unsplash.com/photo-1520637102912-2df6bb2aec6d?auto=format&fit=crop&q=80&w=800', tags: ['Adventure', 'Nature'] },
-              { name: 'Bali, Indonesia', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800', tags: ['Tropical', 'Relax'] },
-            ].map((item, idx) => (
-              <div key={idx} className="group relative h-[420px] rounded-[2rem] overflow-hidden shadow-xl cursor-pointer">
-                <img
-                  src={item.img}
-                  alt={item.name}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-8 left-8 right-8 text-white">
-                  <div className="flex gap-2 mb-3">
-                    {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-wider">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h4 className="text-2xl font-bold">{item.name}</h4>
-                </div>
-              </div>
-            ))}
+      {/* ── 7. Final CTA ── */}
+      <section className="section" style={{ background: '#111827', color: '#fff', textAlign: 'center', borderRadius: '32px', margin: '0 2rem 4rem 2rem', padding: '6rem 2rem' }}>
+        <h2 className="hero-h1" style={{ fontSize: '3.5rem' }}>Ready to explore?</h2>
+        <p className="hero-desc" style={{ margin: '0 auto 3rem auto' }}>Join thousands of travelers planning their dream trips today.</p>
+        <Link href="/dashboard" className="btn-primary" style={{ display: 'inline-block' }}>Get Started for Free</Link>
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="footer">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <h3>TripNest</h3>
+            <p>Your ultimate companion for planning, experiencing, and remembering group travel.</p>
           </div>
-        </section>
-
-        {/* ─── HOW IT WORKS ─── */}
-        <section id="how-it-works" className="max-w-[1280px] mx-auto px-8 pb-32">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-[#191c1d] mb-4">
-              Your Journey, Simplified
-            </h2>
-            <p className="text-lg text-[#444748] max-w-2xl mx-auto">
-              Three simple steps to your most organized adventure yet.
-            </p>
+          <div className="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                step: '01',
-                title: 'Create Your Nest',
-                desc: 'Set up your trip space in seconds. Give it a name, dates, and a destination.',
-                icon: MapPin,
-              },
-              {
-                step: '02',
-                title: 'Invite Your Squad',
-                desc: 'Share a magic link with your travel partners. No sign-up friction, just pure collab.',
-                icon: Users,
-              },
-              {
-                step: '03',
-                title: 'Plan & Explore',
-                desc: 'Add stops, split bills, and build a gallery of memories together.',
-                icon: Sparkles,
-              },
-            ].map((item, i) => (
-              <div key={i} className="relative p-10 rounded-3xl border border-black/5 bg-white shadow-sm hover:shadow-xl transition-all group">
-                <div className="absolute top-0 right-10 -translate-y-1/2 text-7xl font-black text-black/5 group-hover:text-[oklch(0.55_0.24_262.66)]/10 transition-colors">
-                  {item.step}
-                </div>
-                <div className="w-14 h-14 rounded-2xl bg-[oklch(0.55_0.24_262.66)]/10 flex items-center justify-center text-[oklch(0.55_0.24_262.66)] mb-6">
-                  <item.icon size={28} />
-                </div>
-                <h4 className="text-2xl font-bold text-[#191c1d] mb-3">{item.title}</h4>
-                <p className="text-[#444748] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+          <div className="footer-links">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Travel Guides</a></li>
+              <li><a href="#">Community</a></li>
+            </ul>
           </div>
-        </section>
-
-        {/* ─── TESTIMONIALS ─── */}
-        <section className="max-w-[1280px] mx-auto px-8 pb-32">
-          <div className="bg-[#191c1d] rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[oklch(0.55_0.24_262.66)] opacity-10 blur-[100px] -translate-y-1/2 translate-x-1/2" />
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-                  Loved by modern travelers.
-                </h2>
-                <div className="flex items-center gap-1 mb-8">
-                  {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="#f1c40f" color="#f1c40f" />)}
-                  <span className="text-white/60 ml-2 font-medium">4.9/5 from 10k+ users</span>
-                </div>
-                <div className="space-y-8">
-                  {[
-                    {
-                      text: "TripNest changed how we travel. No more messy group chats or forgotten expenses.",
-                      author: "Alex Rivera",
-                      role: "Digital Nomad",
-                      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
-                    },
-                    {
-                      text: "The real-time sync is flawless. We planned our entire Euro-trip in one evening.",
-                      author: "Sarah Chen",
-                      role: "Travel Blogger",
-                      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200"
-                    }
-                  ].map((t, i) => (
-                    <div key={i} className="border-l-2 border-[oklch(0.55_0.24_262.66)] pl-8">
-                      <p className="text-xl text-white/80 italic mb-4">"{t.text}"</p>
-                      <div className="flex items-center gap-4">
-                        <img src={t.img} alt={t.author} className="w-10 h-10 rounded-full object-cover" />
-                        <div>
-                           <p className="text-white font-bold">{t.author}</p>
-                          <p className="text-white/40 text-sm">{t.role}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-               </div>
-              <div className="hidden lg:block relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Travel" 
-                  className="rounded-[2rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700"
-                />
-              </div>
-            </div>
+          <div className="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
           </div>
-        </section>
-      </main>
-
-      {/* ─── FOOTER ─── */}
-      <footer className="w-full bg-white border-t border-black/5 py-12 text-center text-[#444748] text-sm">
-        <p>© 2026 TripNest. All rights reserved.</p>
-        <div className="flex justify-center gap-6 mt-4">
-          <Link href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</Link>
-          <Link href="#" className="hover:text-blue-600 transition-colors">Terms of Service</Link>
-          <Link href="#" className="hover:text-blue-600 transition-colors">Contact</Link>
+        </div>
+        <div style={{ textAlign: 'center', color: '#9ca3af', paddingTop: '2rem', borderTop: '1px solid #e5e7eb' }}>
+          &copy; {new Date().getFullYear()} TripNest. All rights reserved.
         </div>
       </footer>
-
-      {/* Mobile FAB */}
-      <Link
-        href="/signup"
-        className="fixed bottom-8 right-8 w-16 h-16 bg-[#00696b] text-white rounded-full shadow-2xl flex items-center justify-center z-50 md:hidden hover:scale-110 active:scale-95 transition-transform"
-        style={{ boxShadow: '0 4px 20px rgba(0,105,107,0.2)' }}
-      >
-        <MapPin size={28} />
-      </Link>
     </div>
   );
 }
