@@ -67,7 +67,7 @@ export default function HeroCarousel() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[oklch(0.55_0.24_262.66)] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[oklch(0.55_0.24_262.66)]"></span>
           </span>
-          <h2 className="text-base font-extrabold text-[#191c1d] tracking-tight">Featured Trips</h2>
+          <h2 className="text-base font-extrabold text-[#191c1d] dark:text-white tracking-tight">Featured Trips</h2>
         </div>
         {/* Navigation Dots */}
         <div className="flex gap-2 relative z-40">
@@ -108,7 +108,7 @@ export default function HeroCarousel() {
                     <span className={`w-2 h-2 rounded-full ${trip.pulseColor} ${!trip.isCompleted ? 'animate-pulse' : ''}`} />
                     {trip.status}
                   </span>
-                  <div className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                  <div className="bg-black/50 border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
                     {trip.progress}
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function HeroCarousel() {
                             <MapIcon size={18} />
                             Open Trip
                           </button>
-                          <button className="px-6 py-3.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                          <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                             <Calendar size={18} />
                             View Timeline
                           </button>
@@ -156,7 +156,7 @@ export default function HeroCarousel() {
                             <ImageIcon size={18} />
                             View Memories
                           </button>
-                          <button className="px-6 py-3.5 bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                          <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                             <Wallet size={18} />
                             Expense Summary
                           </button>

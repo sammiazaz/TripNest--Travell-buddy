@@ -17,33 +17,33 @@ export default function DashboardPage() {
       {/* ================================================== */}
       <section className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pt-8 relative z-10">
         <div>
-          <h1 className="text-4xl font-[950] tracking-tight text-[#191c1d] mb-1">
+          <h1 className="text-4xl font-[950] tracking-tight text-[#191c1d] dark:text-white mb-1">
             Hi Sammi <span className="inline-block animate-wave">👋</span>
           </h1>
-          <p className="text-[#5c5f60] font-semibold text-sm">
+          <p className="text-[#5c5f60] dark:text-slate-400 font-semibold text-sm">
             Good Morning. Ready for your next adventure?
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           {/* Glassmorphic Weather Widget */}
-          <div className="flex items-center gap-4 bg-white/40 backdrop-blur-xl border border-white/60 px-6 py-2.5 rounded-2xl shadow-sm mr-2 hover:shadow-md transition-all">
+          <div className="flex items-center gap-4 bg-white dark:bg-[#111318] border border-slate-200 dark:border-[#1e2028] px-6 py-2.5 rounded-full shadow-sm mr-2 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-all duration-300">
             <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">
               <Sun size={22} className="animate-[spin_20s_linear_infinite]" />
             </div>
             <div>
               <p className="text-[10px] uppercase tracking-wider text-slate-500 font-extrabold leading-none">Delhi, India</p>
-              <p className="text-lg font-black text-[#191c1d] leading-none mt-1.5">32°C</p>
+              <p className="text-lg font-black text-[#191c1d] dark:text-white leading-none mt-1.5">32°C</p>
             </div>
           </div>
 
           {/* Glassmorphic Search Button */}
-          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all">
+          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all">
             <Search size={18} />
           </button>
 
           {/* Glassmorphic Notification Button with Pulsing Dot */}
-          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all relative">
+          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all relative">
             <Bell size={18} />
             <span className="absolute top-3.5 right-3.5 flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
@@ -52,7 +52,7 @@ export default function DashboardPage() {
           </button>
 
           {/* Glassmorphic Settings Button */}
-          <button className="w-11 h-11 bg-white/50 backdrop-blur-md border border-white/60 rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-white active:scale-95 transition-all">
+          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all">
             <Settings size={18} />
           </button>
         </div>
@@ -66,41 +66,41 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* OVERALL STATS */}
       {/* ================================================== */}
-      <section className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 shadow-lg border border-white/60 hover:shadow-2xl transition-all">
+      <section className="bg-white dark:bg-[#111318] rounded-[2rem] p-6 shadow-sm border border-slate-200 dark:border-[#1e2028] hover:shadow-2xl transition-all">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x divide-black/5">
           <div className="flex flex-col items-center justify-center text-center px-4">
             <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[oklch(0.55_0.24_262.66)] mb-3">
               <PlaneTakeoff size={20} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d]">12</p>
+            <p className="text-2xl font-black text-[#191c1d] dark:text-white">12</p>
             <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Trips</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
             <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-3">
               <Camera size={20} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d]">1.2k</p>
+            <p className="text-2xl font-black text-[#191c1d] dark:text-white">1.2k</p>
             <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Photos</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
             <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 mb-3">
               <Globe size={20} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d]">8</p>
+            <p className="text-2xl font-black text-[#191c1d] dark:text-white">8</p>
             <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Countries</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
             <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
               <Calendar size={20} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d]">45</p>
+            <p className="text-2xl font-black text-[#191c1d] dark:text-white">45</p>
             <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Travel Days</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
             <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center text-rose-600 mb-3">
               <Wallet size={20} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d]">$12.4k</p>
+            <p className="text-2xl font-black text-[#191c1d] dark:text-white">$12.4k</p>
             <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total Spent</p>
           </div>
         </div>
@@ -112,18 +112,18 @@ export default function DashboardPage() {
       <section>
         <div className="flex overflow-x-auto hide-scrollbar gap-4 pb-4 -mx-8 px-8">
           {[
-            { icon: Plus, label: 'Create Trip', color: 'bg-blue-50 text-[oklch(0.55_0.24_262.66)] border-[oklch(0.55_0.24_262.66)]/20' },
+            { icon: Plus, label: 'Create Trip', color: 'bg-[oklch(0.55_0.24_262.66)] text-white border-transparent shadow-md' },
             { icon: CreditCard, label: 'Add Expense', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
             { icon: UploadCloud, label: 'Upload Photos', color: 'bg-purple-50 text-purple-600 border-purple-200' },
             { icon: Compass, label: 'Explore Places', color: 'bg-amber-50 text-amber-600 border-amber-200' },
             { icon: Users, label: 'Invite Members', color: 'bg-rose-50 text-rose-600 border-rose-200' },
             { icon: PieChart, label: 'View Settlements', color: 'bg-indigo-50 text-indigo-600 border-indigo-200' },
           ].map((action, i) => (
-            <button key={i} className="flex-shrink-0 flex items-center gap-3 px-6 py-4 bg-white/60 backdrop-blur-xl border border-white/60 rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all group">
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${action.color} group-hover:scale-110 transition-transform`}>
+            <button key={i} className="flex-shrink-0 flex items-center gap-3 px-6 py-4 bg-white dark:bg-[#111318] border border-slate-200 dark:border-[#1e2028] rounded-full shadow-sm hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-all duration-300 group">
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${action.color} group-hover:scale-110 transition-transform`}>
                 <action.icon size={18} />
               </div>
-              <span className="font-bold text-sm text-[#191c1d]">{action.label}</span>
+              <span className="font-bold text-sm text-[#191c1d] dark:text-white">{action.label}</span>
             </button>
           ))}
         </div>
@@ -137,8 +137,8 @@ export default function DashboardPage() {
         <section className="lg:col-span-8 space-y-6">
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recent Memories</h2>
-              <p className="text-sm text-[#444748] font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
+              <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recent Memories</h2>
+              <p className="text-sm text-[#444748] dark:text-slate-400 font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
             </div>
             <button className="text-sm font-bold text-[oklch(0.55_0.24_262.66)] hover:text-[#2980b9] flex items-center gap-1">
               View All <ArrowRight size={16} />
@@ -171,13 +171,13 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-4 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Expenses</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Expenses</h2>
           </div>
 
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 shadow-lg hover:shadow-2xl transition-all h-[400px] flex flex-col">
+          <div className="bg-white dark:bg-[#111318] rounded-[2rem] p-8 border border-slate-200 dark:border-[#1e2028] shadow-lg hover:shadow-2xl transition-all h-[400px] flex flex-col">
             <div className="mb-6">
               <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">Total Expenses</p>
-              <h3 className="text-4xl font-black text-[#191c1d] mt-2">₹42,500</h3>
+              <h3 className="text-4xl font-black text-[#191c1d] dark:text-white mt-2">₹42,500</h3>
             </div>
 
             {/* Mini Chart Mockup */}
@@ -200,12 +200,12 @@ export default function DashboardPage() {
                     <div className={`w-3 h-3 rounded-full ${item.color}`} />
                     <span className="font-bold text-sm text-slate-700">{item.label}</span>
                   </div>
-                  <span className="font-bold text-sm text-[#191c1d]">{item.amount}</span>
+                  <span className="font-bold text-sm text-[#191c1d] dark:text-white">{item.amount}</span>
                 </div>
               ))}
             </div>
 
-            <button className="w-full mt-6 py-3.5 bg-blue-50 text-[oklch(0.55_0.24_262.66)] font-bold text-sm rounded-xl hover:bg-blue-100 transition-colors">
+            <button className="w-full mt-6 py-3.5 bg-[oklch(0.55_0.24_262.66)] text-white font-bold text-sm rounded-full shadow-[0_4px_15px_rgba(52,152,219,0.3)] hover:-translate-y-[2px] hover:shadow-[0_10px_25px_rgba(52,152,219,0.4)] transition-all duration-300">
               View Detailed Split
             </button>
           </div>
@@ -217,12 +217,12 @@ export default function DashboardPage() {
       {/* ================================================== */}
       <section className="space-y-6">
         <div className="flex items-end justify-between">
-          <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Explore Destinations</h2>
+          <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Explore Destinations</h2>
           <div className="flex gap-2">
             <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-50">
               <ChevronRight size={20} className="rotate-180" />
             </button>
-            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-[#191c1d] hover:bg-slate-50">
+            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-[#191c1d] dark:text-white hover:bg-slate-50">
               <ChevronRight size={20} />
             </button>
           </div>
@@ -239,14 +239,14 @@ export default function DashboardPage() {
             <div key={i} className="flex-shrink-0 w-64 group cursor-pointer">
               <div className="h-80 rounded-[2rem] overflow-hidden relative shadow-sm mb-4">
                 <img src={dest.img} alt={dest.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors">
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/30 dark:bg-[#111318]/50 rounded-full flex items-center justify-center text-white hover:bg-slate-50 dark:hover:bg-[#272a35] hover:text-rose-500 transition-colors">
                   <Heart size={18} />
                 </div>
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl text-xs font-bold text-[#191c1d] flex items-center gap-1 shadow-sm">
+                <div className="absolute bottom-4 left-4 bg-white dark:bg-[#111318] px-3 py-1.5 rounded-xl text-xs font-bold text-[#191c1d] dark:text-white flex items-center gap-1 shadow-sm">
                   <Star size={12} className="fill-amber-400 text-amber-400" /> {dest.rating}
                 </div>
               </div>
-              <h3 className="text-lg font-black text-[#191c1d]">{dest.name}</h3>
+              <h3 className="text-lg font-black text-[#191c1d] dark:text-white">{dest.name}</h3>
               <p className="text-sm font-medium text-slate-500 flex items-center gap-1 mt-1">
                 <MapPin size={14} /> {dest.loc}
               </p>
@@ -262,7 +262,7 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-7 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Upcoming Trips</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Upcoming Trips</h2>
           </div>
 
           <div className="space-y-4">
@@ -271,12 +271,12 @@ export default function DashboardPage() {
               { name: 'Kashmir Escape', date: 'Dec 01 - 10, 2026', img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=400&q=80', members: 2, budget: '₹60,000' },
               { name: 'Thailand Tour', date: 'Feb 14 - 24, 2027', img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80', members: 6, budget: '₹1,20,000' },
             ].map((trip, i) => (
-              <div key={i} className="bg-white/60 backdrop-blur-xl p-4 rounded-[2rem] border border-white/60 shadow-lg flex items-center gap-6 group hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
+              <div key={i} className="bg-white dark:bg-[#111318] p-4 rounded-[2rem] border border-slate-200 dark:border-[#1e2028] shadow-lg flex items-center gap-6 group hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
                 <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
                   <img src={trip.img} alt={trip.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-black text-[#191c1d] mb-1">{trip.name}</h3>
+                  <h3 className="text-lg font-black text-[#191c1d] dark:text-white mb-1">{trip.name}</h3>
                   <div className="flex items-center gap-4 text-sm font-medium text-slate-500">
                     <span className="flex items-center gap-1"><Calendar size={14} /> {trip.date}</span>
                     <span className="flex items-center gap-1"><Users size={14} /> {trip.members}</span>
@@ -284,7 +284,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="hidden md:block text-right pr-4">
                   <p className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Budget</p>
-                  <p className="font-black text-[#191c1d]">{trip.budget}</p>
+                  <p className="font-black text-[#191c1d] dark:text-white">{trip.budget}</p>
                 </div>
                 <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:border-[oklch(0.55_0.24_262.66)] group-hover:text-white transition-colors">
                   <ChevronRight size={20} />
@@ -299,10 +299,10 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-5 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recent Activity</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recent Activity</h2>
           </div>
 
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
+          <div className="bg-white dark:bg-[#111318] rounded-[2rem] p-8 border border-slate-200 dark:border-[#1e2028] shadow-lg hover:shadow-2xl transition-all">
             <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-100">
               {[
                 { user: 'R', name: 'Rahul', action: 'uploaded 15 photos', time: '2h ago', icon: ImageIcon, color: 'bg-purple-100 text-purple-600' },
@@ -321,7 +321,7 @@ export default function DashboardPage() {
                       <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${act.color}`}>
                         {act.user}
                       </div>
-                      <p className="text-sm font-bold text-[#191c1d]">{act.name}</p>
+                      <p className="text-sm font-bold text-[#191c1d] dark:text-white">{act.name}</p>
                     </div>
                     <p className="text-sm font-medium text-slate-600 mb-2">{act.action}</p>
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{act.time}</p>
@@ -340,7 +340,7 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Kerala Weather</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Kerala Weather</h2>
           </div>
 
           <div className="bg-gradient-to-br from-[oklch(0.55_0.24_262.66)] to-[#2980b9] rounded-[2rem] p-8 text-white shadow-lg relative overflow-hidden h-[240px] flex flex-col justify-between">
@@ -351,7 +351,7 @@ export default function DashboardPage() {
                 <h3 className="text-5xl font-black mb-2">28°C</h3>
                 <p className="font-bold text-white/80">Partly Cloudy</p>
               </div>
-              <div className="bg-white/20 backdrop-blur-md px-4 py-2 rounded-xl text-sm font-bold">
+              <div className="bg-white/30 dark:bg-[#111318]/50 px-4 py-2 rounded-xl text-sm font-bold">
                 Today
               </div>
             </div>
@@ -377,7 +377,7 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] tracking-[-0.01em]">Recommended</h2>
+            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recommended</h2>
           </div>
 
           <div className="grid grid-cols-2 gap-4 h-[240px]">
