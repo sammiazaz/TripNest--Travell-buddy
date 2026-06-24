@@ -17,43 +17,43 @@ export default function DashboardPage() {
       {/* ================================================== */}
       <section className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pt-8 relative z-10">
         <div>
-          <h1 className="text-4xl font-[950] tracking-tight text-[#191c1d] dark:text-white mb-1">
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white mb-2">
             Hi Sammi <span className="inline-block animate-wave">👋</span>
           </h1>
-          <p className="text-[#5c5f60] dark:text-slate-400 font-semibold text-sm">
+          <p className="text-slate-500 dark:text-slate-400 font-medium text-sm">
             Good Morning. Ready for your next adventure?
           </p>
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Glassmorphic Weather Widget */}
-          <div className="flex items-center gap-4 bg-white dark:bg-[#111318] border border-slate-200 dark:border-[#1e2028] px-6 py-2.5 rounded-full shadow-sm mr-2 hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-all duration-300">
-            <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center text-amber-500">
-              <Sun size={22} className="animate-[spin_20s_linear_infinite]" />
+          {/* Weather Widget */}
+          <div className="flex items-center gap-4 bg-white dark:bg-[#111111] border border-slate-100 dark:border-white/10 px-5 py-2.5 rounded-full shadow-sm mr-2 hover:shadow-premium transition-all duration-300 cursor-pointer">
+            <div className="w-9 h-9 rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-500">
+              <Sun size={20} className="animate-[spin_20s_linear_infinite]" />
             </div>
             <div>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500 font-extrabold leading-none">Delhi, India</p>
-              <p className="text-lg font-black text-[#191c1d] dark:text-white leading-none mt-1.5">32°C</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold leading-none">Delhi, India</p>
+              <p className="text-sm font-bold text-slate-900 dark:text-white leading-none mt-1">32°C</p>
             </div>
           </div>
 
-          {/* Glassmorphic Search Button */}
-          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all">
-            <Search size={18} />
+          {/* Search Button */}
+          <button className="w-11 h-11 bg-white dark:bg-[#111111] border border-slate-100 dark:border-white/10 rounded-full flex items-center justify-center text-slate-500 shadow-sm hover:shadow-premium hover:text-slate-900 dark:hover:text-white transition-all">
+            <Search size={18} strokeWidth={2.5} />
           </button>
 
-          {/* Glassmorphic Notification Button with Pulsing Dot */}
-          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all relative">
-            <Bell size={18} />
-            <span className="absolute top-3.5 right-3.5 flex h-2 w-2">
+          {/* Notification Button */}
+          <button className="w-11 h-11 bg-white dark:bg-[#111111] border border-slate-100 dark:border-white/10 rounded-full flex items-center justify-center text-slate-500 shadow-sm hover:shadow-premium hover:text-slate-900 dark:hover:text-white transition-all relative">
+            <Bell size={18} strokeWidth={2.5} />
+            <span className="absolute top-3 right-3 flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
             </span>
           </button>
 
-          {/* Glassmorphic Settings Button */}
-          <button className="w-11 h-11 bg-white dark:bg-[#1e2028] border border-slate-200 dark:border-[#272a35] rounded-full flex items-center justify-center text-slate-600 shadow-sm hover:shadow-md hover:scale-105 hover:bg-slate-50 dark:hover:bg-[#272a35] active:scale-95 transition-all">
-            <Settings size={18} />
+          {/* Settings Button */}
+          <button className="w-11 h-11 bg-white dark:bg-[#111111] border border-slate-100 dark:border-white/10 rounded-full flex items-center justify-center text-slate-500 shadow-sm hover:shadow-premium hover:text-slate-900 dark:hover:text-white transition-all">
+            <Settings size={18} strokeWidth={2.5} />
           </button>
         </div>
       </section>
@@ -66,101 +66,178 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* OVERALL STATS */}
       {/* ================================================== */}
-      <section className="bg-white dark:bg-[#111318] rounded-[2rem] p-6 shadow-sm border border-slate-200 dark:border-[#1e2028] hover:shadow-2xl transition-all">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x divide-black/5">
+      <section className="bg-white dark:bg-[#111111] rounded-[24px] p-6 shadow-premium border border-slate-100 dark:border-white/10 transition-all">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:divide-x divide-slate-100 dark:divide-white/5">
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-[oklch(0.55_0.24_262.66)] mb-3">
-              <PlaneTakeoff size={20} />
+            <div className="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 mb-3">
+              <PlaneTakeoff size={20} strokeWidth={2.5} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d] dark:text-white">12</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Trips</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">12</p>
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Trips</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-3">
-              <Camera size={20} />
+            <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-3">
+              <Camera size={20} strokeWidth={2.5} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d] dark:text-white">1.2k</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Photos</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">1.2k</p>
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Photos</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 mb-3">
-              <Globe size={20} />
+            <div className="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 mb-3">
+              <Globe size={20} strokeWidth={2.5} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d] dark:text-white">8</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Countries</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">8</p>
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Countries</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center text-amber-600 mb-3">
-              <Calendar size={20} />
+            <div className="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 mb-3">
+              <Calendar size={20} strokeWidth={2.5} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d] dark:text-white">45</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Travel Days</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">45</p>
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Travel Days</p>
           </div>
           <div className="flex flex-col items-center justify-center text-center px-4">
-            <div className="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center text-rose-600 mb-3">
-              <Wallet size={20} />
+            <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center text-rose-600 mb-3">
+              <Wallet size={20} strokeWidth={2.5} />
             </div>
-            <p className="text-2xl font-black text-[#191c1d] dark:text-white">$12.4k</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Total Spent</p>
+            <p className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">$12.4k</p>
+            <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mt-1">Total Spent</p>
           </div>
         </div>
       </section>
 
       {/* ================================================== */}
-      {/* QUICK ACTIONS */}
+      {/* 3-COLUMN DASHBOARD METRICS */}
       {/* ================================================== */}
-      <section>
-        <div className="flex overflow-x-auto hide-scrollbar gap-4 pb-4 -mx-8 px-8">
-          {[
-            { icon: Plus, label: 'Create Trip', color: 'bg-[oklch(0.55_0.24_262.66)] text-white border-transparent shadow-md' },
-            { icon: CreditCard, label: 'Add Expense', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' },
-            { icon: UploadCloud, label: 'Upload Photos', color: 'bg-purple-50 text-purple-600 border-purple-200' },
-            { icon: Compass, label: 'Explore Places', color: 'bg-amber-50 text-amber-600 border-amber-200' },
-            { icon: Users, label: 'Invite Members', color: 'bg-rose-50 text-rose-600 border-rose-200' },
-            { icon: PieChart, label: 'View Settlements', color: 'bg-indigo-50 text-indigo-600 border-indigo-200' },
-          ].map((action, i) => (
-            <button key={i} className="flex-shrink-0 flex items-center gap-3 px-6 py-4 bg-white dark:bg-[#111318] border border-slate-200 dark:border-[#1e2028] rounded-full shadow-sm hover:shadow-[0_10px_25px_rgba(0,0,0,0.05)] hover:-translate-y-[2px] transition-all duration-300 group">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center border ${action.color} group-hover:scale-110 transition-transform`}>
-                <action.icon size={18} />
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* COLUMN 1: Upcoming Trips */}
+        <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 shadow-premium border border-slate-100 dark:border-white/10">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Upcoming Trips</h3>
+            <Link href="#" className="text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors">View All</Link>
+          </div>
+          <div className="space-y-4">
+            {[
+              { name: 'Swiss Alps Adventure', date: '15 - 22 Sep 2025', members: 2, daysLeft: 15, img: 'https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=400&q=80' },
+              { name: 'Bali Getaway', date: '10 - 18 Oct 2025', members: 3, daysLeft: 40, img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80' }
+            ].map((trip, i) => (
+              <div key={i} className="flex items-center gap-4 bg-slate-50/50 dark:bg-white/[0.02] p-3 rounded-[16px] border border-slate-100 dark:border-white/10 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-colors cursor-pointer group">
+                <img src={trip.img} className="w-[72px] h-[72px] rounded-[12px] object-cover group-hover:scale-105 transition-transform" alt={trip.name} />
+                <div className="flex-1">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1.5">{trip.name}</h4>
+                  <p className="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5"><Calendar size={12} className="text-slate-400" /> {trip.date}</p>
+                  <p className="text-[11px] text-slate-500 font-semibold flex items-center gap-1.5 mt-1"><Users size={12} className="text-slate-400" /> {trip.members} Members</p>
+                </div>
+                <div className="flex flex-col items-center justify-center bg-blue-50 dark:bg-blue-500/10 text-blue-600 px-3 py-2 rounded-[12px] min-w-[60px]">
+                  <span className="text-lg font-black leading-none">{trip.daysLeft}</span>
+                  <span className="text-[8px] font-bold uppercase tracking-wider mt-1.5 text-blue-500 text-center">Days Left</span>
+                </div>
               </div>
-              <span className="font-bold text-sm text-[#191c1d] dark:text-white">{action.label}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* COLUMN 2: Recent Activity */}
+        <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 shadow-premium border border-slate-100 dark:border-white/10">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Recent Activity</h3>
+          </div>
+          <div className="space-y-0 divide-y divide-slate-100 dark:divide-white/5">
+            <div className="flex items-center justify-between py-4 group cursor-pointer">
+              <div className="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&q=80" className="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-white/10" alt="Rahul" />
+                <div>
+                  <p className="text-sm text-slate-700 dark:text-slate-300"><span className="font-bold text-slate-900 dark:text-white">Rahul</span> uploaded 24 photos from Santorini</p>
+                  <p className="text-[11px] text-slate-400 font-semibold mt-1">2 hours ago</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=100&q=80" className="w-8 h-8 rounded-[8px] object-cover" alt="Thumb" />
+                <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=100&q=80" className="w-8 h-8 rounded-[8px] object-cover" alt="Thumb" />
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between py-4 group cursor-pointer">
+              <div className="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" className="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-white/10" alt="Ananya" />
+                <div>
+                  <p className="text-sm text-slate-700 dark:text-slate-300"><span className="font-bold text-slate-900 dark:text-white">Ananya</span> created a new trip to Iceland</p>
+                  <p className="text-[11px] text-slate-400 font-semibold mt-1">5 hours ago</p>
+                </div>
+              </div>
+              <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
+            </div>
+
+            <div className="flex items-center justify-between py-4 group cursor-pointer">
+              <div className="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" className="w-10 h-10 rounded-full object-cover border border-slate-200 dark:border-white/10" alt="You" />
+                <div>
+                  <p className="text-sm text-slate-700 dark:text-slate-300"><span className="font-bold text-slate-900 dark:text-white">You</span> added expenses for Bali Getaway</p>
+                  <p className="text-[11px] text-slate-400 font-semibold mt-1">1 day ago</p>
+                </div>
+              </div>
+              <ChevronRight size={16} className="text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
+            </div>
+          </div>
+        </div>
+
+        {/* COLUMN 3: Quick Actions */}
+        <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 shadow-premium border border-slate-100 dark:border-white/10">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">Quick Actions</h3>
+          </div>
+          <div className="grid grid-cols-2 gap-4 h-[calc(100%-3rem)]">
+            <button className="flex items-center justify-center gap-3 p-4 rounded-[16px] bg-blue-50/80 hover:bg-blue-100/80 dark:bg-blue-500/10 dark:hover:bg-blue-500/20 transition-all border border-blue-100/50 dark:border-blue-500/20 group">
+              <Plane className="text-blue-600" size={20} strokeWidth={2.5} />
+              <span className="text-sm font-bold text-slate-900 dark:text-white">Plan a Trip</span>
             </button>
-          ))}
+            <button className="flex items-center justify-center gap-3 p-4 rounded-[16px] bg-emerald-50/80 hover:bg-emerald-100/80 dark:bg-emerald-500/10 dark:hover:bg-emerald-500/20 transition-all border border-emerald-100/50 dark:border-emerald-500/20 group">
+              <Wallet className="text-emerald-600" size={20} strokeWidth={2.5} />
+              <span className="text-sm font-bold text-slate-900 dark:text-white">Add Expense</span>
+            </button>
+            <button className="flex items-center justify-center gap-3 p-4 rounded-[16px] bg-purple-50/80 hover:bg-purple-100/80 dark:bg-purple-500/10 dark:hover:bg-purple-500/20 transition-all border border-purple-100/50 dark:border-purple-500/20 group">
+              <Users className="text-purple-600" size={20} strokeWidth={2.5} />
+              <span className="text-sm font-bold text-slate-900 dark:text-white">Invite Friends</span>
+            </button>
+            <button className="flex items-center justify-center gap-3 p-4 rounded-[16px] bg-amber-50/80 hover:bg-amber-100/80 dark:bg-amber-500/10 dark:hover:bg-amber-500/20 transition-all border border-amber-100/50 dark:border-amber-500/20 group">
+              <ImageIcon className="text-amber-600" size={20} strokeWidth={2.5} />
+              <span className="text-sm font-bold text-slate-900 dark:text-white">Add Photos</span>
+            </button>
+          </div>
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-4">
         {/* ================================================== */}
         {/* MEMORIES SECTION */}
         {/* ================================================== */}
         <section className="lg:col-span-8 space-y-6">
           <div className="flex items-end justify-between">
             <div>
-              <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recent Memories</h2>
-              <p className="text-sm text-[#444748] dark:text-slate-400 font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Recent Memories</h2>
+              <p className="text-sm text-slate-500 font-medium mt-1">254 Photos • Last updated 2 hours ago</p>
             </div>
-            <button className="text-sm font-bold text-[oklch(0.55_0.24_262.66)] hover:text-[#2980b9] flex items-center gap-1">
+            <button className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 transition-colors">
               View All <ArrowRight size={16} />
             </button>
           </div>
 
           <div className="grid grid-cols-3 grid-rows-2 gap-4 h-[400px]">
             {/* Large Photo */}
-            <div className="col-span-2 row-span-2 rounded-[2rem] overflow-hidden relative group shadow-sm">
+            <div className="col-span-2 row-span-2 rounded-[24px] overflow-hidden relative group shadow-premium border border-slate-100 dark:border-white/10">
               <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Memory" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                <p className="text-white font-bold">Taj Mahal at Sunrise</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                <p className="text-white font-bold text-lg">Taj Mahal at Sunrise</p>
               </div>
             </div>
             {/* Small Photos */}
-            <div className="rounded-[1.5rem] overflow-hidden relative group shadow-sm">
+            <div className="rounded-[24px] overflow-hidden relative group shadow-premium border border-slate-100 dark:border-white/10">
               <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Memory" />
             </div>
-            <div className="rounded-[1.5rem] overflow-hidden relative group shadow-sm">
+            <div className="rounded-[24px] overflow-hidden relative group shadow-premium border border-slate-100 dark:border-white/10">
               <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=80" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Memory" />
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer hover:bg-black/50 transition-colors">
-                <span className="text-white font-black text-xl">+250</span>
+              <div className="absolute inset-0 bg-slate-900/40 flex items-center justify-center cursor-pointer hover:bg-slate-900/50 transition-colors backdrop-blur-[2px]">
+                <span className="text-white font-bold text-xl">+250</span>
               </div>
             </div>
           </div>
@@ -171,24 +248,30 @@ export default function DashboardPage() {
         {/* ================================================== */}
         <section className="lg:col-span-4 space-y-6">
           <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Expenses</h2>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Expenses</h2>
+              <p className="text-sm text-slate-500 font-medium mt-1">Total budget: ₹1,50,000</p>
+            </div>
+            <button className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1 transition-colors">
+              View Report <ArrowRight size={16} />
+            </button>
           </div>
 
-          <div className="bg-white dark:bg-[#111318] rounded-[2rem] p-8 border border-slate-200 dark:border-[#1e2028] shadow-lg hover:shadow-2xl transition-all h-[400px] flex flex-col">
+          <div className="bg-white dark:bg-[#111111] rounded-[24px] p-8 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all duration-300 h-[400px] flex flex-col">
             <div className="mb-6">
-              <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">Total Expenses</p>
-              <h3 className="text-4xl font-black text-[#191c1d] dark:text-white mt-2">₹42,500</h3>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1.5">Total Expenses</p>
+              <h3 className="text-4xl font-bold text-slate-900 dark:text-white tracking-tight">₹42,500</h3>
             </div>
 
             {/* Mini Chart Mockup */}
-            <div className="h-4 w-full rounded-full bg-slate-100 flex overflow-hidden mb-8">
+            <div className="h-3 w-full rounded-full bg-slate-100 dark:bg-white/5 flex overflow-hidden mb-8">
               <div className="h-full bg-rose-500 w-[40%]" />
               <div className="h-full bg-blue-500 w-[25%]" />
               <div className="h-full bg-emerald-500 w-[20%]" />
               <div className="h-full bg-amber-500 w-[15%]" />
             </div>
 
-            <div className="space-y-4 flex-1 overflow-y-auto pr-2 custom-scrollbar">
+            <div className="space-y-5 flex-1 overflow-y-auto pr-2 custom-scrollbar">
               {[
                 { label: 'Food & Dining', amount: '₹17,000', color: 'bg-rose-500' },
                 { label: 'Hotels', amount: '₹10,625', color: 'bg-blue-500' },
@@ -197,15 +280,15 @@ export default function DashboardPage() {
               ].map((item, i) => (
                 <div key={i} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className={`w-3 h-3 rounded-full ${item.color}`} />
-                    <span className="font-bold text-sm text-slate-700">{item.label}</span>
+                    <div className={`w-2.5 h-2.5 rounded-full ${item.color}`} />
+                    <span className="font-semibold text-sm text-slate-600 dark:text-slate-300">{item.label}</span>
                   </div>
-                  <span className="font-bold text-sm text-[#191c1d] dark:text-white">{item.amount}</span>
+                  <span className="font-bold text-sm text-slate-900 dark:text-white">{item.amount}</span>
                 </div>
               ))}
             </div>
 
-            <button className="w-full mt-6 py-3.5 bg-[oklch(0.55_0.24_262.66)] text-white font-bold text-sm rounded-full shadow-[0_4px_15px_rgba(52,152,219,0.3)] hover:-translate-y-[2px] hover:shadow-[0_10px_25px_rgba(52,152,219,0.4)] transition-all duration-300">
+            <button className="w-full mt-6 py-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-white/5 dark:hover:bg-white/10 text-slate-900 dark:text-white font-semibold text-sm rounded-full transition-colors border border-slate-200 dark:border-white/10">
               View Detailed Split
             </button>
           </div>
@@ -215,14 +298,14 @@ export default function DashboardPage() {
       {/* ================================================== */}
       {/* TRAVEL DESTINATIONS */}
       {/* ================================================== */}
-      <section className="space-y-6">
+      <section className="space-y-6 mt-4">
         <div className="flex items-end justify-between">
-          <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Explore Destinations</h2>
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Explore Destinations</h2>
           <div className="flex gap-2">
-            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-50">
+            <button className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-400 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
               <ChevronRight size={20} className="rotate-180" />
             </button>
-            <button className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-[#191c1d] dark:text-white hover:bg-slate-50">
+            <button className="w-10 h-10 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
               <ChevronRight size={20} />
             </button>
           </div>
@@ -237,168 +320,25 @@ export default function DashboardPage() {
             { name: 'Bali', img: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80', rating: '4.8', loc: 'Indonesia' },
           ].map((dest, i) => (
             <div key={i} className="flex-shrink-0 w-64 group cursor-pointer">
-              <div className="h-80 rounded-[2rem] overflow-hidden relative shadow-sm mb-4">
+              <div className="h-80 rounded-[24px] overflow-hidden relative shadow-premium border border-slate-100 dark:border-white/10 mb-4">
                 <img src={dest.img} alt={dest.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/30 dark:bg-[#111318]/50 rounded-full flex items-center justify-center text-white hover:bg-slate-50 dark:hover:bg-[#272a35] hover:text-rose-500 transition-colors">
-                  <Heart size={18} />
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/30 dark:bg-slate-900/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors">
+                  <Heart size={18} strokeWidth={2.5} />
                 </div>
-                <div className="absolute bottom-4 left-4 bg-white dark:bg-[#111318] px-3 py-1.5 rounded-xl text-xs font-bold text-[#191c1d] dark:text-white flex items-center gap-1 shadow-sm">
+                <div className="absolute bottom-4 left-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm px-3 py-1.5 rounded-[12px] text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5 shadow-sm">
                   <Star size={12} className="fill-amber-400 text-amber-400" /> {dest.rating}
                 </div>
               </div>
-              <h3 className="text-lg font-black text-[#191c1d] dark:text-white">{dest.name}</h3>
-              <p className="text-sm font-medium text-slate-500 flex items-center gap-1 mt-1">
-                <MapPin size={14} /> {dest.loc}
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1">{dest.name}</h3>
+              <p className="text-sm font-medium text-slate-500 flex items-center gap-1.5">
+                <MapPin size={14} className="text-slate-400" /> {dest.loc}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        {/* ================================================== */}
-        {/* UPCOMING TRIPS */}
-        {/* ================================================== */}
-        <section className="lg:col-span-7 space-y-6">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Upcoming Trips</h2>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              { name: 'Goa Weekend', date: 'Oct 12 - 15, 2026', img: 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=400&q=80', members: 4, budget: '₹15,000' },
-              { name: 'Kashmir Escape', date: 'Dec 01 - 10, 2026', img: 'https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=400&q=80', members: 2, budget: '₹60,000' },
-              { name: 'Thailand Tour', date: 'Feb 14 - 24, 2027', img: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=400&q=80', members: 6, budget: '₹1,20,000' },
-            ].map((trip, i) => (
-              <div key={i} className="bg-white dark:bg-[#111318] p-4 rounded-[2rem] border border-slate-200 dark:border-[#1e2028] shadow-lg flex items-center gap-6 group hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer">
-                <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
-                  <img src={trip.img} alt={trip.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-black text-[#191c1d] dark:text-white mb-1">{trip.name}</h3>
-                  <div className="flex items-center gap-4 text-sm font-medium text-slate-500">
-                    <span className="flex items-center gap-1"><Calendar size={14} /> {trip.date}</span>
-                    <span className="flex items-center gap-1"><Users size={14} /> {trip.members}</span>
-                  </div>
-                </div>
-                <div className="hidden md:block text-right pr-4">
-                  <p className="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Budget</p>
-                  <p className="font-black text-[#191c1d] dark:text-white">{trip.budget}</p>
-                </div>
-                <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 group-hover:bg-[oklch(0.55_0.24_262.66)] group-hover:border-[oklch(0.55_0.24_262.66)] group-hover:text-white transition-colors">
-                  <ChevronRight size={20} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ================================================== */}
-        {/* TRIP ACTIVITY */}
-        {/* ================================================== */}
-        <section className="lg:col-span-5 space-y-6">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recent Activity</h2>
-          </div>
-
-          <div className="bg-white dark:bg-[#111318] rounded-[2rem] p-8 border border-slate-200 dark:border-[#1e2028] shadow-lg hover:shadow-2xl transition-all">
-            <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-slate-100">
-              {[
-                { user: 'R', name: 'Rahul', action: 'uploaded 15 photos', time: '2h ago', icon: ImageIcon, color: 'bg-purple-100 text-purple-600' },
-                { user: 'A', name: 'Ali', action: 'added Hotel Expense ₹8,000', time: '5h ago', icon: CreditCard, color: 'bg-rose-100 text-rose-600' },
-                { user: 'Am', name: 'Aman', action: 'joined the trip', time: '1d ago', icon: Users, color: 'bg-emerald-100 text-emerald-600' },
-                { user: 'S', name: 'Sammi', action: 'created itinerary', time: '2d ago', icon: Calendar, color: 'bg-blue-100 text-[oklch(0.55_0.24_262.66)]' },
-              ].map((act, i) => (
-                <div key={i} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  {/* Marker */}
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-100 text-slate-400 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-sm z-10">
-                    <act.icon size={14} />
-                  </div>
-                  {/* Card */}
-                  <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-2xl border border-slate-100 bg-slate-50/50 shadow-sm">
-                    <div className="flex items-center gap-3 mb-1">
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${act.color}`}>
-                        {act.user}
-                      </div>
-                      <p className="text-sm font-bold text-[#191c1d] dark:text-white">{act.name}</p>
-                    </div>
-                    <p className="text-sm font-medium text-slate-600 mb-2">{act.action}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{act.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-        {/* ================================================== */}
-        {/* WEATHER & TRAVEL INFO */}
-        {/* ================================================== */}
-        <section className="space-y-6">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Kerala Weather</h2>
-          </div>
-
-          <div className="bg-gradient-to-br from-[oklch(0.55_0.24_262.66)] to-[#2980b9] rounded-[2rem] p-8 text-white shadow-lg relative overflow-hidden h-[240px] flex flex-col justify-between">
-            <CloudSun size={120} className="absolute -top-4 -right-8 text-white/20" />
-
-            <div className="flex justify-between items-start z-10">
-              <div>
-                <h3 className="text-5xl font-black mb-2">28°C</h3>
-                <p className="font-bold text-white/80">Partly Cloudy</p>
-              </div>
-              <div className="bg-white/30 dark:bg-[#111318]/50 px-4 py-2 rounded-xl text-sm font-bold">
-                Today
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 z-10">
-              <div className="bg-black/10 rounded-xl p-4">
-                <p className="text-[10px] uppercase tracking-wider text-white/60 font-bold mb-1">Rain Probability</p>
-                <p className="text-xl font-bold">40%</p>
-              </div>
-              <div className="bg-black/10 rounded-xl p-4 flex items-center gap-3">
-                <AlertCircle className="text-amber-300" size={24} />
-                <div>
-                  <p className="text-[10px] uppercase tracking-wider text-white/60 font-bold mb-1">Travel Alert</p>
-                  <p className="text-sm font-bold">Heavy traffic expected</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ================================================== */}
-        {/* RECOMMENDED FOR YOU */}
-        {/* ================================================== */}
-        <section className="space-y-6">
-          <div className="flex items-end justify-between">
-            <h2 className="text-2xl font-[900] text-[#191c1d] dark:text-white tracking-[-0.01em]">Recommended</h2>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 h-[240px]">
-            {[
-              { name: 'Manali', img: 'https://images.unsplash.com/photo-1605649487212-4dcb1b600615?w=400&q=80' },
-              { name: 'Ladakh', img: 'https://images.unsplash.com/photo-1596783069151-54dfb9ed54cc?w=400&q=80' },
-            ].map((rec, i) => (
-              <div key={i} className="rounded-[2rem] overflow-hidden relative group shadow-sm">
-                <img src={rec.img} alt={rec.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-xl font-black">{rec.name}</h3>
-                  <button className="mt-2 text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
-                    View Guide <ArrowRight size={14} />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      </div>
 
     </div>
   );
