@@ -181,7 +181,7 @@ const CATEGORY_EMOJIS: Record<string, string> = {
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Food: 'oklch(0.55_0.24_262.66)',
+  Food: '#2563EB',
   Hotel: '#2ecc71',
   Cab: '#f39c12',
   Tickets: '#9b59b6',
@@ -522,7 +522,7 @@ export default function SantoriniTripPage() {
       <div className="flex flex-col sm:flex-row items-center gap-8">
         <div className="relative shrink-0 w-44 h-44">
           <svg width="176" height="176" viewBox="0 0 176 176">
-            <circle cx={cx} cy={cy} r={r} fill="none" stroke="#f1f5f9" strokeWidth={strokeW} />
+            <circle cx={cx} cy={cy} r={r} fill="none" stroke="#f1f5f9" className="dark:stroke-white/5" strokeWidth={strokeW} />
             {categoryBreakdown.map((cat, i) => {
               const dash = (cat.amount / total) * circumference;
               const gap = circumference - dash;
@@ -538,19 +538,19 @@ export default function SantoriniTripPage() {
             })}
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <p className="text-xl font-black text-[#191c1d]">₹{total.toLocaleString()}</p>
-            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Total spent</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">₹{total.toLocaleString()}</p>
+            <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Total spent</p>
           </div>
         </div>
         <div className="space-y-3 flex-1 w-full min-w-0">
           {categoryBreakdown.map((cat, i) => (
-            <div key={i} className="flex items-center justify-between gap-4 border-b border-slate-50 pb-1.5 last:border-0 last:pb-0">
+            <div key={i} className="flex items-center justify-between gap-4 border-b border-slate-50 dark:border-white/10 pb-1.5 last:border-0 last:pb-0">
               <div className="flex items-center gap-2.5 min-w-0">
                 <div className="w-3 h-3 rounded-full shrink-0" style={{ background: cat.color }} />
-                <span className="text-xs font-bold text-slate-600 truncate">{cat.label}</span>
+                <span className="text-xs font-bold text-slate-600 dark:text-slate-300 truncate">{cat.label}</span>
               </div>
               <div className="flex items-center gap-3 shrink-0">
-                <span className="text-xs font-black text-[#191c1d]">₹{cat.amount.toLocaleString()}</span>
+                <span className="text-xs font-bold text-slate-900 dark:text-white">₹{cat.amount.toLocaleString()}</span>
                 <span className="text-[10px] font-bold text-slate-400 w-7 text-right">{cat.pct}%</span>
               </div>
             </div>
@@ -574,58 +574,58 @@ export default function SantoriniTripPage() {
 
       {/* Back button */}
       <div className="flex items-center justify-between">
-        <Link href="/dashboard/trips" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-[#191c1d] transition-colors">
+        <Link href="/dashboard/trips" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">
           <ChevronLeft size={18} /> Back to My Trips
         </Link>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded-xl text-xs font-bold hover:bg-slate-50 transition-colors">
+          <button className="flex items-center gap-1.5 bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-xl text-xs font-semibold hover:bg-slate-50 dark:hover:bg-white/5 shadow-sm transition-colors">
             <Share2 size={13} /> Share
           </button>
-          <button className="p-1.5 bg-white border border-slate-200 text-slate-600 rounded-xl hover:bg-slate-50 transition-colors">
+          <button className="p-1.5 bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 shadow-sm transition-colors">
             <MoreHorizontal size={16} />
           </button>
         </div>
       </div>
 
       {/* ── COVER HERO CARD (Full width) ── */}
-      <div className="relative w-full h-[460px] rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 group">
+      <div className="relative w-full h-[460px] rounded-[24px] overflow-hidden shadow-premium border border-slate-100 dark:border-white/10 group">
         <img
           src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80"
           alt="Santorini Summer"
           className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-1000"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent" />
 
         <div className="absolute inset-0 p-10 flex flex-col justify-between">
           <div className="flex justify-between items-start">
-            <span className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2">
+            <span className="bg-blue-600 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2">
               ✈️ Summer Getaway
             </span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <h1 className="text-5xl font-black text-white tracking-tight mb-4 drop-shadow-md">Santorini Summer</h1>
+              <h1 className="text-5xl font-bold text-white tracking-tight mb-4 drop-shadow-md">Santorini Summer</h1>
               <div className="flex flex-wrap items-center gap-6 text-white/90">
                 <div className="flex items-center gap-2 font-medium">
-                  <Calendar size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  <Calendar size={18} className="text-blue-500" />
                   Aug 12 – Aug 22, 2025
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <Users size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  <Users size={18} className="text-blue-500" />
                   {members.length} Members
                 </div>
                 <div className="flex items-center gap-2 font-medium">
-                  <MapPin size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                  <MapPin size={18} className="text-blue-500" />
                   Greece
                 </div>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex -space-x-2 bg-white/20 backdrop-blur-md p-2 rounded-full border border-white/30 shadow-lg">
+              <div className="flex -space-x-2 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20 shadow-lg">
                 {members.map((m, i) => (
-                  <div key={i} className={`w-10 h-10 rounded-full border-2 border-white flex items-center justify-center text-xs font-black ${m.color}`}>
+                  <div key={i} className={`w-10 h-10 rounded-full border-2 border-slate-900 flex items-center justify-center text-xs font-bold ${m.color}`}>
                     {m.avatar}
                   </div>
                 ))}
@@ -636,14 +636,14 @@ export default function SantoriniTripPage() {
       </div>
 
       {/* ── TAB BAR ── */}
-      <div className="bg-white rounded-2xl p-2 border border-black/5 shadow-sm flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+      <div className="bg-white dark:bg-[#111111] rounded-2xl p-2 border border-slate-100 dark:border-white/10 shadow-premium flex items-center gap-1.5 overflow-x-auto scrollbar-none">
         {tabs.map(({ key, label }) => (
           <button
             key={key}
             onClick={() => setActiveTab(key)}
-            className={`px-5 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all uppercase tracking-wider ${activeTab === key
-                ? 'bg-[oklch(0.55_0.24_262.66)] text-white shadow-[0_4px_12px_rgba(52,152,219,0.3)] scale-[1.02]'
-                : 'text-[#444748] hover:text-[#191c1d] hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98]'
+            className={`px-5 py-2.5 rounded-[12px] text-xs font-bold whitespace-nowrap transition-all uppercase tracking-wider ${activeTab === key
+                ? 'bg-blue-600 text-white shadow-md scale-[1.02]'
+                : 'text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-white/5 hover:scale-[1.02] active:scale-[0.98]'
               }`}
           >
             {label}
@@ -660,24 +660,24 @@ export default function SantoriniTripPage() {
           <div className="lg:col-span-8 space-y-6">
 
             {/* Trip Overview Panel */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
-              <h2 className="text-xs font-extrabold text-[#191c1d] uppercase tracking-wider text-slate-400">Trip Overview</h2>
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all space-y-6">
+              <h2 className="text-xs font-bold text-slate-500 uppercase tracking-wider">Trip Overview</h2>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
-                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Total Expense</p>
-                  <p className="text-lg font-black text-[oklch(0.55_0.24_262.66)]">₹{totalExpense.toLocaleString()}</p>
+                <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">Total Expense</p>
+                  <p className="text-lg font-bold text-blue-600">₹{totalExpense.toLocaleString()}</p>
                 </div>
-                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
-                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Photos</p>
-                  <p className="text-lg font-black text-[#191c1d]">{gallery.length}</p>
+                <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">Photos</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{gallery.length}</p>
                 </div>
-                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
-                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Places Visited</p>
-                  <p className="text-lg font-black text-[#191c1d]">{timeline.filter(t => t.done).length}/{timeline.length}</p>
+                <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">Places Visited</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-white">{timeline.filter(t => t.done).length}/{timeline.length}</p>
                 </div>
-                <div className="bg-white/40 backdrop-blur-md border border-white/50 rounded-2xl p-4 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
-                  <p className="text-[9px] uppercase tracking-wider text-[#444748] font-bold mb-1">Settlements</p>
-                  <p className="text-lg font-black text-orange-500">{settlementSuggestions.length}</p>
+                <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all">
+                  <p className="text-[9px] uppercase tracking-wider text-slate-500 font-bold mb-1">Settlements</p>
+                  <p className="text-lg font-bold text-orange-500">{settlementSuggestions.length}</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -686,13 +686,13 @@ export default function SantoriniTripPage() {
                     setNewExpCategory('Food');
                     setShowAddExpense(true);
                   }}
-                  className="flex-1 bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-[0_4px_20px_rgba(52,152,219,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 bg-blue-600 text-white py-3.5 rounded-xl font-bold text-xs shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5"
                 >
                   <Plus size={14} /> Add Expense
                 </button>
                 <button
                   onClick={handleUploadPhoto}
-                  className="flex-1 bg-slate-50 border border-black/5 text-[#444748] py-3.5 rounded-xl font-bold text-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 py-3.5 rounded-xl font-bold text-xs hover:shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-1.5"
                 >
                   <UploadCloud size={14} /> Upload Photos
                 </button>
@@ -700,21 +700,21 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Recent Memories & Photo Grid */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-base font-extrabold text-[#191c1d]">Recent Memories</h2>
-                <button onClick={() => setActiveTab('gallery')} className="text-xs font-bold text-[oklch(0.55_0.24_262.66)] hover:underline">View Gallery</button>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">Recent Memories</h2>
+                <button onClick={() => setActiveTab('gallery')} className="text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline">View Gallery</button>
               </div>
               <div className="grid grid-cols-4 gap-3 h-44">
                 {gallery.slice(0, 3).map((item, idx) => (
-                  <div key={item.id} className={`rounded-2xl overflow-hidden relative group cursor-pointer ${idx === 0 ? 'col-span-2' : 'col-span-1'}`}>
+                  <div key={item.id} className={`rounded-2xl overflow-hidden relative group cursor-pointer ${idx === 0 ? 'col-span-2' : 'col-span-1'} border border-slate-100 dark:border-white/10 shadow-sm`}>
                     <img src={item.img} alt="Memories" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+                    <div className="absolute inset-0 bg-slate-900/20 hover:bg-slate-900/10 transition-colors" />
                   </div>
                 ))}
                 {gallery.length > 3 && (
-                  <button onClick={() => setActiveTab('gallery')} className="col-span-1 rounded-2xl bg-slate-50 border border-dashed border-slate-200 flex flex-col items-center justify-center text-slate-400 hover:bg-slate-100 transition-colors">
-                    <span className="text-lg font-black">+{gallery.length - 3}</span>
+                  <button onClick={() => setActiveTab('gallery')} className="col-span-1 rounded-2xl bg-slate-50 dark:bg-white/5 border border-dashed border-slate-200 dark:border-white/10 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+                    <span className="text-lg font-bold">+{gallery.length - 3}</span>
                     <span className="text-[9px] font-bold uppercase tracking-wider">More</span>
                   </button>
                 )}
@@ -722,8 +722,8 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Expense Breakdown by Category */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
-              <h2 className="text-base font-extrabold text-[#191c1d] mb-5">Expense Breakdown</h2>
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white mb-5">Expense Breakdown</h2>
               <DonutChart />
             </div>
           </div>
@@ -732,38 +732,38 @@ export default function SantoriniTripPage() {
           <div className="lg:col-span-4 space-y-6">
 
             {/* Settlements Summary */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
-              <h2 className="text-base font-extrabold text-[#191c1d] mb-1">Settlement Suggestions</h2>
-              <p className="text-[10px] text-slate-400 mb-4 uppercase tracking-wider font-bold">Simplified transactions</p>
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white mb-1">Settlement Suggestions</h2>
+              <p className="text-[10px] text-slate-500 mb-4 uppercase tracking-wider font-bold">Simplified transactions</p>
 
               {settlementSuggestions.length === 0 ? (
                 <div className="py-6 flex flex-col items-center text-center">
                   <CheckCircle2 size={36} className="text-emerald-500 mb-2" />
-                  <p className="text-xs font-bold text-[#191c1d]">All Settled Up!</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">No outstanding balances remaining.</p>
+                  <p className="text-xs font-bold text-slate-900 dark:text-white">All Settled Up!</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">No outstanding balances remaining.</p>
                 </div>
               ) : (
                 <div className="space-y-3">
                   {settlementSuggestions.slice(0, 3).map((s) => (
-                    <div key={s.id} className="flex items-center gap-2.5 bg-slate-50 rounded-xl p-3 border border-slate-100/50">
-                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-black shrink-0 ${s.from.color}`}>
+                    <div key={s.id} className="flex items-center gap-2.5 bg-slate-50 dark:bg-white/5 rounded-xl p-3 border border-slate-100 dark:border-white/10">
+                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${s.from.color}`}>
                         {s.from.avatar}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs font-bold text-slate-700 truncate leading-none mb-1">{s.from.name.split(' ')[0]}</p>
-                        <p className="text-[9px] text-slate-400 font-bold uppercase">owes</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white truncate leading-none mb-1">{s.from.name.split(' ')[0]}</p>
+                        <p className="text-[9px] text-slate-500 font-bold uppercase">owes</p>
                       </div>
-                      <ArrowRight size={12} className="text-slate-300" />
-                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-black shrink-0 ${s.to.color}`}>
+                      <ArrowRight size={12} className="text-slate-400" />
+                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${s.to.color}`}>
                         {s.to.avatar}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs font-bold text-slate-700 truncate leading-none mb-1">{s.to.name.split(' ')[0]}</p>
-                        <p className="text-[9px] text-emerald-500 font-black">₹{s.amount}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white truncate leading-none mb-1">{s.to.name.split(' ')[0]}</p>
+                        <p className="text-[9px] text-emerald-500 font-bold">₹{s.amount}</p>
                       </div>
                       <button
                         onClick={() => handleSettleSuggestion(s.from.id, s.to.id, s.amount)}
-                        className="bg-white border border-slate-200 text-slate-600 px-2 py-1 rounded-lg text-[9px] font-bold hover:bg-[oklch(0.55_0.24_262.66)] hover:text-white hover:border-transparent transition-colors"
+                        className="bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-white px-2 py-1 rounded-[8px] text-[9px] font-bold hover:bg-blue-600 hover:text-white hover:border-transparent transition-colors"
                       >
                         Settle
                       </button>
@@ -774,52 +774,52 @@ export default function SantoriniTripPage() {
             </div>
 
             {/* Quick Actions Panel */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
-              <h2 className="text-base font-extrabold text-[#191c1d] mb-4">Quick Actions</h2>
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white mb-4">Quick Actions</h2>
               <div className="grid grid-cols-2 gap-3">
                 <button
                   onClick={() => {
                     setNewExpCategory('Food');
                     setShowAddExpense(true);
                   }}
-                  className="flex flex-col items-center justify-center gap-2 p-4 bg-slate-50 border border-slate-100 hover:bg-slate-100/50 rounded-2xl transition-colors text-center"
+                  className="flex flex-col items-center justify-center gap-2 p-4 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 rounded-2xl transition-colors text-center"
                 >
-                  <Wallet size={20} className="text-[oklch(0.55_0.24_262.66)]" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700">Add Expense</span>
+                  <Wallet size={20} className="text-blue-600" />
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Add Expense</span>
                 </button>
                 <button
                   onClick={handleUploadPhoto}
-                  className="flex flex-col items-center justify-center gap-2 p-4 bg-slate-50 border border-slate-100 hover:bg-slate-100/50 rounded-2xl transition-colors text-center"
+                  className="flex flex-col items-center justify-center gap-2 p-4 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/10 rounded-2xl transition-colors text-center"
                 >
                   <UploadCloud size={20} className="text-emerald-500" />
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700">Upload Photo</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Upload Photo</span>
                 </button>
               </div>
             </div>
 
             {/* Recent Trip Activity Log */}
-            <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
-              <h2 className="text-base font-extrabold text-[#191c1d] mb-4">Activity Log</h2>
+            <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
+              <h2 className="text-base font-bold text-slate-900 dark:text-white mb-4">Activity Log</h2>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[oklch(0.55_0.24_262.66)] mt-1.5 shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Rahul added Hotel Expense</p>
-                    <p className="text-[9px] text-slate-400">Yesterday at 12:00 PM</p>
+                    <p className="text-xs font-bold text-slate-800 dark:text-slate-200">Rahul added Hotel Expense</p>
+                    <p className="text-[9px] text-slate-500">Yesterday at 12:00 PM</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Sammi uploaded 6 photos</p>
-                    <p className="text-[9px] text-slate-400">2 days ago</p>
+                    <p className="text-xs font-bold text-slate-800 dark:text-slate-200">Sammi uploaded 6 photos</p>
+                    <p className="text-[9px] text-slate-500">2 days ago</p>
                   </div>
                 </div>
                 <div className="flex gap-3">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0" />
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Ali Khan joined trip space</p>
-                    <p className="text-[9px] text-slate-400">4 days ago</p>
+                    <p className="text-xs font-bold text-slate-800 dark:text-slate-200">Ali Khan joined trip space</p>
+                    <p className="text-[9px] text-slate-500">4 days ago</p>
                   </div>
                 </div>
               </div>
@@ -835,27 +835,27 @@ export default function SantoriniTripPage() {
 
           {/* Top Summary Cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Total Expense</p>
-              <p className="text-2xl font-black text-[#191c1d]">₹{totalExpense.toLocaleString()}</p>
-              <p className="text-[10px] text-slate-400 mt-1">All spendings combined</p>
+            <div className="bg-white dark:bg-[#111111] rounded-2xl p-5 border border-slate-100 dark:border-white/10 shadow-sm hover:shadow-md transition-all">
+              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Total Expense</p>
+              <p className="text-2xl font-bold text-slate-900 dark:text-white">₹{totalExpense.toLocaleString()}</p>
+              <p className="text-[10px] text-slate-500 mt-1">All spendings combined</p>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Your Balance</p>
-              <p className={`text-2xl font-black ${sammiBalance >= 0 ? 'text-green-500' : 'text-rose-500'}`}>
+            <div className="bg-white dark:bg-[#111111] rounded-2xl p-5 border border-slate-100 dark:border-white/10 shadow-sm hover:shadow-md transition-all">
+              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Your Balance</p>
+              <p className={`text-2xl font-bold ${sammiBalance >= 0 ? 'text-green-500' : 'text-rose-500'}`}>
                 {sammiBalance >= 0 ? `+₹${Math.round(sammiBalance)}` : `-₹${Math.round(Math.abs(sammiBalance))}`}
               </p>
-              <p className="text-[10px] text-slate-400 mt-1">{sammiBalance >= 0 ? 'You will receive' : 'You owe overall'}</p>
+              <p className="text-[10px] text-slate-500 mt-1">{sammiBalance >= 0 ? 'You will receive' : 'You owe overall'}</p>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Pending Settlements</p>
-              <p className="text-2xl font-black text-orange-500">{settlementSuggestions.length}</p>
-              <p className="text-[10px] text-slate-400 mt-1">Transactions to clear</p>
+            <div className="bg-white dark:bg-[#111111] rounded-2xl p-5 border border-slate-100 dark:border-white/10 shadow-sm hover:shadow-md transition-all">
+              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Pending Settlements</p>
+              <p className="text-2xl font-bold text-orange-500">{settlementSuggestions.length}</p>
+              <p className="text-[10px] text-slate-500 mt-1">Transactions to clear</p>
             </div>
-            <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-1">Total Members</p>
-              <p className="text-2xl font-black text-[#191c1d]">{members.length}</p>
-              <p className="text-[10px] text-slate-400 mt-1">Equal split partition</p>
+            <div className="bg-white dark:bg-[#111111] rounded-2xl p-5 border border-slate-100 dark:border-white/10 shadow-sm hover:shadow-md transition-all">
+              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mb-1">Total Members</p>
+              <p className="text-2xl font-bold text-slate-900 dark:text-white">{members.length}</p>
+              <p className="text-[10px] text-slate-500 mt-1">Equal split partition</p>
             </div>
           </div>
 
@@ -866,51 +866,51 @@ export default function SantoriniTripPage() {
             <div className="lg:col-span-5 space-y-6">
 
               {/* Category breakdown */}
-              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
-                <h2 className="text-base font-extrabold text-[#191c1d] mb-5">Category breakdown</h2>
+              <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
+                <h2 className="text-base font-bold text-slate-900 dark:text-white mb-5">Category breakdown</h2>
                 <DonutChart />
               </div>
 
               {/* Settlements Engine Suggestions */}
-              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
+              <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
                 <div className="flex items-center justify-between mb-1">
-                  <h2 className="text-base font-extrabold text-[#191c1d]">Settlement Suggestions</h2>
+                  <h2 className="text-base font-bold text-slate-900 dark:text-white">Settlement Suggestions</h2>
                   {settlementSuggestions.length > 0 && (
                     <span className="text-[9px] bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
                       Auto-Calculated
                     </span>
                   )}
                 </div>
-                <p className="text-[10px] text-slate-400 mb-5 font-bold uppercase tracking-wider">Shortest routes to settle all balances</p>
+                <p className="text-[10px] text-slate-500 mb-5 font-bold uppercase tracking-wider">Shortest routes to settle all balances</p>
 
                 {settlementSuggestions.length === 0 ? (
                   <div className="py-8 text-center">
                     <CheckCircle2 size={36} className="text-emerald-500 mx-auto mb-2" />
-                    <p className="text-xs font-bold text-[#191c1d]">No Settlements Needed</p>
-                    <p className="text-[10px] text-slate-400 mt-0.5">Everything is perfectly balanced.</p>
+                    <p className="text-xs font-bold text-slate-900 dark:text-white">No Settlements Needed</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">Everything is perfectly balanced.</p>
                   </div>
                 ) : (
                   <div className="space-y-3">
                     {settlementSuggestions.map((s) => (
-                      <div key={s.id} className="flex items-center gap-3 bg-slate-50 border border-slate-100 rounded-2xl p-3.5">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-black ${s.from.color}`}>
+                      <div key={s.id} className="flex items-center gap-3 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-3.5">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold ${s.from.color}`}>
                           {s.from.avatar}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs font-black text-slate-800 truncate leading-none mb-1">{s.from.name}</p>
-                          <p className="text-[9px] text-slate-400 uppercase font-bold">owes</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white truncate leading-none mb-1">{s.from.name}</p>
+                          <p className="text-[9px] text-slate-500 uppercase font-bold">owes</p>
                         </div>
-                        <ArrowRight size={14} className="text-slate-300" />
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-black ${s.to.color}`}>
+                        <ArrowRight size={14} className="text-slate-400" />
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold ${s.to.color}`}>
                           {s.to.avatar}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <p className="text-xs font-black text-slate-800 truncate leading-none mb-1">{s.to.name}</p>
-                          <p className="text-[10px] text-red-500 font-extrabold">₹{s.amount.toLocaleString()}</p>
+                          <p className="text-xs font-bold text-slate-900 dark:text-white truncate leading-none mb-1">{s.to.name}</p>
+                          <p className="text-[10px] text-rose-500 font-bold">₹{s.amount.toLocaleString()}</p>
                         </div>
                         <button
                           onClick={() => handleSettleSuggestion(s.from.id, s.to.id, s.amount)}
-                          className="bg-[oklch(0.55_0.24_262.66)] text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-sm hover:bg-[#2980b9] transition-all"
+                          className="bg-blue-600 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold shadow-sm hover:bg-blue-700 transition-all"
                         >
                           Mark Settled
                         </button>
@@ -924,18 +924,18 @@ export default function SantoriniTripPage() {
 
             {/* Right Workspace: Recent Expenses list */}
             <div className="lg:col-span-7">
-              <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-4">
+              <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-base font-extrabold text-[#191c1d]">Recent Expenses</h2>
-                    <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Click card to split details</p>
+                    <h2 className="text-base font-bold text-slate-900 dark:text-white">Recent Expenses</h2>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Click card to split details</p>
                   </div>
                   <button
                     onClick={() => {
                       setNewExpCategory('Food');
                       setShowAddExpense(true);
                     }}
-                    className="bg-[oklch(0.55_0.24_262.66)] hover:bg-[#2980b9] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all"
                   >
                     <Plus size={14} /> Add Expense
                   </button>
@@ -949,18 +949,18 @@ export default function SantoriniTripPage() {
                         setSelectedExpense(exp);
                         setShowDetailDrawer(true);
                       }}
-                      className="w-full flex items-center gap-3.5 bg-white/40 hover:bg-white/60 backdrop-blur-md border border-white/50 hover:border-white/80 rounded-2xl px-4 py-3.5 cursor-pointer transition-all text-left hover:shadow-lg hover:-translate-y-0.5"
+                      className="w-full flex items-center gap-3.5 bg-slate-50/50 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 border border-slate-100 dark:border-white/10 hover:border-slate-200 dark:hover:border-white/20 rounded-2xl px-4 py-3.5 cursor-pointer transition-all text-left hover:shadow-sm hover:-translate-y-0.5"
                     >
-                      <div className="w-11 h-11 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-white dark:bg-black/20 border border-slate-100 dark:border-white/10 flex items-center justify-center text-xl shrink-0">
                         {exp.emoji}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-black text-[#191c1d] truncate">{exp.title}</p>
-                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{exp.category} • by {exp.createdBy.split(' ')[0]}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white truncate">{exp.title}</p>
+                        <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">{exp.category} • by {exp.createdBy.split(' ')[0]}</p>
                       </div>
                       <div className="text-right shrink-0">
-                        <p className="text-xs font-black text-[#191c1d]">₹{exp.amount.toLocaleString()}</p>
-                        <p className="text-[10px] text-slate-400 mt-0.5">{exp.date}</p>
+                        <p className="text-xs font-bold text-slate-900 dark:text-white">₹{exp.amount.toLocaleString()}</p>
+                        <p className="text-[10px] text-slate-500 mt-0.5">{exp.date}</p>
                       </div>
                     </div>
                   ))}
@@ -976,34 +976,34 @@ export default function SantoriniTripPage() {
       {/* 3. GALLERY TAB */}
       {activeTab === 'gallery' && (
         <div className="space-y-6">
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
+          <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-base font-extrabold text-[#191c1d]">Google Photos Shared Gallery</h2>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">High definition travel memories</p>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">Google Photos Shared Gallery</h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">High definition travel memories</p>
               </div>
               <div className="flex items-center gap-2.5">
                 <button
                   onClick={handleUploadPhoto}
-                  className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-blue-700 transition-all"
                 >
                   <UploadCloud size={14} /> Upload Photos
                 </button>
-                <button className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 hover:bg-slate-50 transition-all">
+                <button className="bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
                   <Download size={14} /> Download Album
                 </button>
               </div>
             </div>
 
             {/* Gallery Filters */}
-            <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-slate-100">
+            <div className="flex flex-wrap items-center gap-2 pb-2 border-b border-slate-100 dark:border-white/10">
               {['All', 'Sammi Azaz', 'Rahul Kumar', 'Ali Khan', 'Aman Verma', 'Faizan Shaikh'].map(f => (
                 <button
                   key={f}
                   onClick={() => setGalleryFilter(f)}
-                  className={`px-3 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-all hover:scale-[1.05] active:scale-[0.95] ${galleryFilter === f
-                      ? 'bg-[oklch(0.55_0.24_262.66)]/10 text-[oklch(0.55_0.24_262.66)]'
-                      : 'bg-slate-50 text-slate-400 hover:bg-slate-100'
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all hover:scale-[1.05] active:scale-[0.95] ${galleryFilter === f
+                      ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600'
+                      : 'bg-slate-50 dark:bg-white/5 text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10'
                     }`}
                 >
                   {f === 'All' ? 'All Photos' : f.split(' ')[0]}
@@ -1016,12 +1016,12 @@ export default function SantoriniTripPage() {
               {gallery
                 .filter(img => galleryFilter === 'All' || img.author === galleryFilter)
                 .map((img) => (
-                  <div key={img.id} className="relative group rounded-2xl overflow-hidden shadow-sm h-48 border border-slate-100">
+                  <div key={img.id} className="relative group rounded-2xl overflow-hidden shadow-sm h-48 border border-slate-100 dark:border-white/10">
                     <img src={img.img} alt="Gallery item" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3.5">
                       <div>
                         <p className="text-[10px] text-white/90 font-bold">Uploaded by {img.author.split(' ')[0]}</p>
-                        <p className="text-[8px] text-white/60 uppercase font-black tracking-wider mt-0.5">{img.album}</p>
+                        <p className="text-[8px] text-white/60 uppercase font-bold tracking-wider mt-0.5">{img.album}</p>
                       </div>
                     </div>
                   </div>
@@ -1034,50 +1034,50 @@ export default function SantoriniTripPage() {
       {/* 4. MEMBERS TAB */}
       {activeTab === 'members' && (
         <div className="space-y-6">
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
+          <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-base font-extrabold text-[#191c1d]">Active Trip Space Members</h2>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Contributions & balances overview</p>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">Active Trip Space Members</h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Contributions & balances overview</p>
               </div>
-              <button className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50 transition-all">
+              <button className="bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
                 Invite Member
               </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {memberFinances.map((m) => (
-                <div key={m.id} className="border border-slate-100 bg-slate-50/40 rounded-2xl p-5 shadow-sm space-y-4">
+                <div key={m.id} className="border border-slate-100 dark:border-white/10 bg-slate-50/40 dark:bg-white/5 rounded-2xl p-5 shadow-sm space-y-4">
                   <div className="flex items-center gap-3.5">
-                    <div className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 shadow-sm ${m.color}`}>
+                    <div className={`w-11 h-11 rounded-full flex items-center justify-center font-bold text-sm shrink-0 shadow-sm ${m.color}`}>
                       {m.avatar}
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-black text-slate-800 truncate leading-none mb-1">{m.name}</p>
-                      <span className="text-[9px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider inline-block">
+                      <p className="text-sm font-bold text-slate-900 dark:text-white truncate leading-none mb-1">{m.name}</p>
+                      <span className="text-[9px] bg-blue-50 dark:bg-blue-500/10 text-blue-600 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider inline-block">
                         {m.role}
                       </span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-100 dark:border-white/10">
                     <div>
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total Paid</p>
-                      <p className="text-base font-black text-[#191c1d] mt-0.5">₹{m.totalPaid.toLocaleString()}</p>
+                      <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Total Paid</p>
+                      <p className="text-base font-bold text-slate-900 dark:text-white mt-0.5">₹{m.totalPaid.toLocaleString()}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Share</p>
-                      <p className="text-base font-bold text-slate-600 mt-0.5">₹{Math.round(m.totalShare).toLocaleString()}</p>
+                      <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Share</p>
+                      <p className="text-base font-bold text-slate-600 dark:text-slate-300 mt-0.5">₹{Math.round(m.totalShare).toLocaleString()}</p>
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-bold uppercase">Balance Status</span>
-                    <span className={`text-xs font-black px-2.5 py-1 rounded-xl uppercase tracking-wider text-[9px] ${m.balance > 0.01
+                  <div className="pt-3 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase">Balance Status</span>
+                    <span className={`text-xs font-bold px-2.5 py-1 rounded-xl uppercase tracking-wider text-[9px] ${m.balance > 0.01
                         ? 'bg-green-50 text-green-600'
                         : m.balance < -0.01
                           ? 'bg-rose-50 text-rose-600'
-                          : 'bg-slate-100 text-slate-500'
+                          : 'bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-300'
                       }`}>
                       {m.balance > 0.01
                         ? `Gets back ₹${Math.round(m.balance)}`
@@ -1096,29 +1096,29 @@ export default function SantoriniTripPage() {
       {/* 5. TIMELINE TAB */}
       {activeTab === 'timeline' && (
         <div className="space-y-6">
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all">
+          <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-base font-extrabold text-[#191c1d]">Day-Wise Itinerary Plan</h2>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Timeline schedule for Santorini Summer</p>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">Day-Wise Itinerary Plan</h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Timeline schedule for Santorini Summer</p>
               </div>
-              <button className="bg-white border border-slate-200 text-slate-600 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 hover:bg-slate-50 transition-all">
+              <button className="bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 hover:bg-slate-50 dark:hover:bg-white/5 transition-all">
                 <Plus size={14} /> Add Event
               </button>
             </div>
 
-            <div className="relative pl-6 md:pl-12 border-l-2 border-slate-100 space-y-8 max-w-3xl ml-4">
+            <div className="relative pl-6 md:pl-12 border-l-2 border-slate-100 dark:border-white/10 space-y-8 max-w-3xl ml-4">
               {timeline.map((day, idx) => (
                 <div key={idx} className="relative group">
                   {/* Timeline point */}
-                  <div className={`absolute -left-[35px] md:-left-[59px] w-6 h-6 md:w-8 md:h-8 rounded-full border-4 border-white flex items-center justify-center font-black text-[9px] md:text-xs shadow-sm shrink-0 transition-colors ${day.done ? 'bg-[oklch(0.55_0.24_262.66)] text-white' : 'bg-slate-200 text-slate-400'
+                  <div className={`absolute -left-[35px] md:-left-[59px] w-6 h-6 md:w-8 md:h-8 rounded-full border-4 border-white dark:border-[#111318] flex items-center justify-center font-bold text-[9px] md:text-xs shadow-sm shrink-0 transition-colors ${day.done ? 'bg-blue-600 text-white' : 'bg-slate-200 dark:bg-white/10 text-slate-500'
                     }`}>
                     {day.day}
                   </div>
 
-                  <div className="bg-white/40 hover:bg-white/60 backdrop-blur-md border border-white/50 rounded-2xl p-5 transition-all hover:shadow-lg cursor-pointer">
+                  <div className="bg-slate-50/50 dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 border border-slate-100 dark:border-white/10 rounded-2xl p-5 transition-all hover:shadow-md cursor-pointer">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-black text-[oklch(0.55_0.24_262.66)] uppercase tracking-widest leading-none">
+                      <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest leading-none">
                         Day {day.day} • {day.time}
                       </span>
                       <button
@@ -1128,15 +1128,15 @@ export default function SantoriniTripPage() {
                         }}
                         className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md flex items-center gap-1 transition-colors ${day.done
                             ? 'bg-green-50 text-green-600'
-                            : 'bg-slate-200 text-slate-500 hover:bg-slate-300'
+                            : 'bg-slate-200 dark:bg-white/10 text-slate-500 hover:bg-slate-300 dark:hover:bg-white/20'
                           }`}
                       >
                         {day.done ? 'Completed' : 'Mark Visited'}
                       </button>
                     </div>
-                    <h3 className="text-sm font-black text-slate-800 leading-snug mb-1">{day.title}</h3>
+                    <h3 className="text-sm font-bold text-slate-900 dark:text-white leading-snug mb-1">{day.title}</h3>
                     <p className="text-xs text-slate-500 font-medium leading-relaxed">{day.desc}</p>
-                    <div className="flex items-center gap-1.5 mt-3 text-[10px] text-slate-400 font-bold">
+                    <div className="flex items-center gap-1.5 mt-3 text-[10px] text-slate-500 font-bold">
                       <ImageIcon size={12} /> {day.photos} Memories captured
                     </div>
                   </div>
@@ -1150,29 +1150,29 @@ export default function SantoriniTripPage() {
       {/* 6. NOTES TAB */}
       {activeTab === 'notes' && (
         <div className="space-y-6">
-          <div className="bg-white/60 backdrop-blur-xl rounded-[2rem] p-6 border border-white/60 shadow-lg hover:shadow-2xl transition-all space-y-6">
+          <div className="bg-white dark:bg-[#111111] rounded-[24px] p-6 border border-slate-100 dark:border-white/10 shadow-premium hover:shadow-premium-hover transition-all space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="text-base font-extrabold text-[#191c1d]">Shared Space Notes & Checklists</h2>
-                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Important files,packing checks,and travel logs</p>
+                <h2 className="text-base font-bold text-slate-900 dark:text-white">Shared Space Notes & Checklists</h2>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Important files, packing checks, and travel logs</p>
               </div>
               <button
                 onClick={() => setShowAddNote(true)}
-                className="bg-[oklch(0.55_0.24_262.66)] text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-[#2980b9] transition-all"
+                className="bg-blue-600 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm hover:bg-blue-700 transition-all"
               >
                 <Plus size={14} /> Add Note
               </button>
             </div>
 
             {/* Filters */}
-            <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
+            <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-white/10">
               {['All', 'Packing', 'Info', 'Emergency'].map(f => (
                 <button
                   key={f}
                   onClick={() => setNoteFilter(f)}
-                  className={`px-3.5 py-1.5 rounded-lg text-[10px] font-extrabold uppercase tracking-wider transition-colors ${noteFilter === f
-                      ? 'bg-[oklch(0.55_0.24_262.66)]/10 text-[oklch(0.55_0.24_262.66)]'
-                      : 'bg-slate-50 text-slate-400 hover:bg-slate-100'
+                  className={`px-3.5 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors ${noteFilter === f
+                      ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600'
+                      : 'bg-slate-50 dark:bg-white/5 text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10'
                     }`}
                 >
                   {f}
@@ -1185,23 +1185,23 @@ export default function SantoriniTripPage() {
               {notes
                 .filter(n => noteFilter === 'All' || n.category === noteFilter)
                 .map((note) => (
-                  <div key={note.id} className="bg-slate-50/50 border border-slate-100 rounded-2xl p-5 relative space-y-3">
+                  <div key={note.id} className="bg-slate-50/50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-5 relative space-y-3">
                     <button
                       onClick={() => setNotes(notes.filter(n => n.id !== note.id))}
-                      className="absolute top-4 right-4 text-slate-300 hover:text-rose-500 transition-colors"
+                      className="absolute top-4 right-4 text-slate-300 dark:text-slate-500 hover:text-rose-500 transition-colors"
                     >
                       <Trash2 size={13} />
                     </button>
                     <div>
-                      <span className="text-[8px] bg-slate-200/60 text-slate-500 px-2 py-0.5 rounded-full font-black tracking-widest uppercase">
+                      <span className="text-[8px] bg-slate-200/60 dark:bg-white/10 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full font-bold tracking-widest uppercase">
                         {note.category}
                       </span>
-                      <h3 className="text-xs font-black text-slate-800 mt-2">{note.title}</h3>
+                      <h3 className="text-xs font-bold text-slate-900 dark:text-white mt-2">{note.title}</h3>
                     </div>
                     <ul className="space-y-1.5">
                       {note.content.map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-xs text-slate-600 font-medium">
-                          <CheckCircle2 size={12} className="text-[oklch(0.55_0.24_262.66)] shrink-0 mt-0.5" />
+                        <li key={idx} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
+                          <CheckCircle2 size={12} className="text-blue-600 shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -1217,35 +1217,35 @@ export default function SantoriniTripPage() {
       {showAddExpense && (
         <>
           <div className="fixed inset-0 bg-black/40 z-40 backdrop-blur-sm" onClick={() => setShowAddExpense(false)} />
-          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.2)] max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white dark:bg-[#111111] rounded-[24px] shadow-premium max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100 dark:border-white/10">
             <div className="p-6 space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider">Add New Expense</h3>
-                <button onClick={() => setShowAddExpense(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/10">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Add New Expense</h3>
+                <button onClick={() => setShowAddExpense(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
                   <X size={18} />
                 </button>
               </div>
 
               <form onSubmit={handleAddExpense} className="space-y-4">
                 <div>
-                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Description</label>
+                  <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Description</label>
                   <input
                     type="text"
                     required
                     value={newExpTitle}
                     onChange={(e) => setNewExpTitle(e.target.value)}
                     placeholder="e.g. Dinner at BBQ Nation"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4.5 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4.5 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all"
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Category</label>
+                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Category</label>
                     <select
                       value={newExpCategory}
                       onChange={(e) => setNewExpCategory(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-3 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all"
                     >
                       {Object.keys(CATEGORY_EMOJIS).map(cat => (
                         <option key={cat} value={cat}>{CATEGORY_EMOJIS[cat]} {cat}</option>
@@ -1253,7 +1253,7 @@ export default function SantoriniTripPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Amount (₹)</label>
+                    <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Amount (₹)</label>
                     <input
                       type="number"
                       required
@@ -1261,23 +1261,23 @@ export default function SantoriniTripPage() {
                       value={newExpAmount}
                       onChange={(e) => setNewExpAmount(e.target.value)}
                       placeholder="Amount"
-                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
+                      className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Notes (Optional)</label>
+                  <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Notes (Optional)</label>
                   <textarea
                     value={newExpNotes}
                     onChange={(e) => setNewExpNotes(e.target.value)}
                     placeholder="Additional details..."
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all h-20 resize-none"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all h-20 resize-none"
                   />
                 </div>
 
                 {/* Auto Capture details */}
-                <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-[10px] text-slate-400 space-y-1.5 font-bold">
+                <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-xl p-3 text-[10px] text-slate-500 space-y-1.5 font-bold">
                   <div className="flex items-center gap-1.5"><Clock size={11} /> Auto-Capture: Today, {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                   <div className="flex items-center gap-1.5"><MapPin size={11} /> Location: Santorini, Greece</div>
                   <div className="flex items-center gap-1.5"><Users size={11} /> Split: Equally among {members.length} members (₹{Math.round((parseFloat(newExpAmount) || 0) / members.length)} each)</div>
@@ -1285,7 +1285,7 @@ export default function SantoriniTripPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
+                  className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-blue-700 active:scale-98 transition-all uppercase tracking-wider"
                 >
                   Save Expense
                 </button>
@@ -1299,34 +1299,34 @@ export default function SantoriniTripPage() {
       {showAddNote && (
         <>
           <div className="fixed inset-0 bg-black/40 z-40 backdrop-blur-sm" onClick={() => setShowAddNote(false)} />
-          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.2)] max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white dark:bg-[#111111] rounded-[24px] shadow-premium max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100 dark:border-white/10">
             <div className="p-6 space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-                <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider">Add New Travel Note</h3>
-                <button onClick={() => setShowAddNote(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/10">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Add New Travel Note</h3>
+                <button onClick={() => setShowAddNote(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
                   <X size={18} />
                 </button>
               </div>
 
               <form onSubmit={handleAddNote} className="space-y-4">
                 <div>
-                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Title</label>
+                  <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Title</label>
                   <input
                     type="text"
                     required
                     value={newNoteTitle}
                     onChange={(e) => setNewNoteTitle(e.target.value)}
                     placeholder="e.g. Packing Essentials 🎒"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Category</label>
+                  <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Category</label>
                   <select
                     value={newNoteCategory}
                     onChange={(e) => setNewNoteCategory(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-3 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all"
                   >
                     <option value="Packing">Packing List</option>
                     <option value="Info">General Info</option>
@@ -1336,19 +1336,19 @@ export default function SantoriniTripPage() {
                 </div>
 
                 <div>
-                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Content (One item per line)</label>
+                  <label className="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-1">Content (One item per line)</label>
                   <textarea
                     required
                     value={newNoteContent}
                     onChange={(e) => setNewNoteContent(e.target.value)}
                     placeholder="Item 1&#10;Item 2&#10;Item 3"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] focus:bg-white transition-all h-28"
+                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl px-4 py-3 text-xs font-semibold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all h-28"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-[#2980b9] active:scale-98 transition-all uppercase tracking-wider"
+                  className="w-full bg-blue-600 text-white py-3.5 rounded-xl font-bold text-xs shadow-md hover:bg-blue-700 active:scale-98 transition-all uppercase tracking-wider"
                 >
                   Add Note
                 </button>
@@ -1362,28 +1362,28 @@ export default function SantoriniTripPage() {
       {showDetailDrawer && selectedExpense && (
         <>
           <div className="fixed inset-0 bg-black/40 z-30 backdrop-blur-sm" onClick={() => setShowDetailDrawer(false)} />
-          <div className="fixed bottom-0 left-0 right-0 z-40 bg-white rounded-t-[2.5rem] shadow-[0_-8px_40px_rgba(0,0,0,0.15)] max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-300">
+          <div className="fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-[#111111] rounded-t-[2.5rem] shadow-[0_-8px_40px_rgba(0,0,0,0.15)] max-h-[85vh] overflow-y-auto animate-in slide-in-from-bottom duration-300 dark:border-t dark:border-white/10">
             <div className="max-w-4xl mx-auto p-8 space-y-6">
 
               {/* Grab handle */}
-              <div className="w-12 h-1.5 bg-slate-200 rounded-full mx-auto" />
+              <div className="w-12 h-1.5 bg-slate-200 dark:bg-white/10 rounded-full mx-auto" />
 
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-slate-100">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-slate-100 dark:border-white/10">
                 <div>
-                  <span className="text-[9px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-black tracking-widest uppercase">
+                  <span className="text-[9px] bg-slate-100 dark:bg-white/10 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full font-bold tracking-widest uppercase">
                     Expense Split details
                   </span>
-                  <h2 className="text-2xl font-black text-slate-800 mt-2">{selectedExpense.title}</h2>
-                  <p className="text-xs text-slate-400 font-medium mt-1">{selectedExpense.date} • {selectedExpense.time} • {selectedExpense.location}</p>
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-2">{selectedExpense.title}</h2>
+                  <p className="text-xs text-slate-500 font-medium mt-1">{selectedExpense.date} • {selectedExpense.time} • {selectedExpense.location}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => openContributionModal(selectedExpense)}
-                    className="flex items-center gap-1.5 text-xs font-bold text-[oklch(0.55_0.24_262.66)] bg-blue-50 px-3.5 py-2 rounded-xl hover:bg-blue-100 transition-colors"
+                    className="flex items-center gap-1.5 text-xs font-bold text-blue-600 bg-blue-50 dark:bg-blue-500/10 px-3.5 py-2 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-colors"
                   >
                     <Edit2 size={13} /> Update contribution
                   </button>
-                  <button onClick={() => setShowDetailDrawer(false)} className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 transition-colors">
+                  <button onClick={() => setShowDetailDrawer(false)} className="w-8 h-8 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center text-slate-500 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors">
                     <X size={18} />
                   </button>
                 </div>
@@ -1396,34 +1396,34 @@ export default function SantoriniTripPage() {
 
                   {/* Split Summary Cards */}
                   <div className="grid grid-cols-3 gap-4">
-                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center">
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Total paid</p>
-                      <p className="text-lg font-black text-slate-800 mt-1">₹{selectedExpense.amount.toLocaleString()}</p>
+                    <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 text-center">
+                      <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Total paid</p>
+                      <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">₹{selectedExpense.amount.toLocaleString()}</p>
                     </div>
-                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center">
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Share per head</p>
-                      <p className="text-lg font-black text-slate-800 mt-1">₹{Math.round(selectedExpense.amount / members.length).toLocaleString()}</p>
+                    <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 text-center">
+                      <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Share per head</p>
+                      <p className="text-lg font-bold text-slate-900 dark:text-white mt-1">₹{Math.round(selectedExpense.amount / members.length).toLocaleString()}</p>
                     </div>
-                    <div className="bg-slate-50 border border-slate-100 rounded-2xl p-4 text-center">
-                      <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider">Split rule</p>
-                      <p className="text-sm font-bold text-[oklch(0.55_0.24_262.66)] mt-1.5 uppercase tracking-wide">Equal Split</p>
+                    <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-2xl p-4 text-center">
+                      <p className="text-[9px] text-slate-500 font-bold uppercase tracking-wider">Split rule</p>
+                      <p className="text-sm font-bold text-blue-600 mt-1.5 uppercase tracking-wide">Equal Split</p>
                     </div>
                   </div>
 
                   {/* Contributions Table */}
                   <div className="space-y-3">
-                    <h3 className="text-xs font-black text-slate-700 uppercase tracking-wider">Contribution Ledger</h3>
-                    <div className="bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm">
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Contribution Ledger</h3>
+                    <div className="bg-white dark:bg-[#111111] border border-slate-100 dark:border-white/10 rounded-[24px] overflow-hidden shadow-sm">
                       <table className="w-full border-collapse">
                         <thead>
-                          <tr className="bg-slate-50/70 border-b border-slate-100 text-left">
-                            <th className="px-5 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-wider">Member</th>
-                            <th className="px-5 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-wider text-right">Expected Share</th>
-                            <th className="px-5 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-wider text-right">Amount Paid</th>
-                            <th className="px-5 py-3 text-[9px] font-bold text-slate-400 uppercase tracking-wider text-right">Net Balance</th>
+                          <tr className="bg-slate-50/70 dark:bg-white/5 border-b border-slate-100 dark:border-white/10 text-left">
+                            <th className="px-5 py-3 text-[9px] font-bold text-slate-500 uppercase tracking-wider">Member</th>
+                            <th className="px-5 py-3 text-[9px] font-bold text-slate-500 uppercase tracking-wider text-right">Expected Share</th>
+                            <th className="px-5 py-3 text-[9px] font-bold text-slate-500 uppercase tracking-wider text-right">Amount Paid</th>
+                            <th className="px-5 py-3 text-[9px] font-bold text-slate-500 uppercase tracking-wider text-right">Net Balance</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-50">
+                        <tbody className="divide-y divide-slate-50 dark:divide-white/5">
                           {members.map(m => {
                             const expected = selectedExpense.amount / members.length;
                             const paid = selectedExpense.paidBy[m.id] || 0;
@@ -1432,23 +1432,23 @@ export default function SantoriniTripPage() {
                             return (
                               <tr key={m.id}>
                                 <td className="px-5 py-3.5 flex items-center gap-2.5">
-                                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-black shrink-0 ${m.color}`}>
+                                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 ${m.color}`}>
                                     {m.avatar}
                                   </div>
-                                  <span className="text-xs font-bold text-slate-700">{m.name}</span>
+                                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{m.name}</span>
                                 </td>
                                 <td className="px-5 py-3.5 text-xs text-slate-500 text-right">
                                   ₹{Math.round(expected).toLocaleString()}
                                 </td>
-                                <td className="px-5 py-3.5 text-xs font-bold text-slate-700 text-right">
+                                <td className="px-5 py-3.5 text-xs font-bold text-slate-900 dark:text-white text-right">
                                   ₹{paid.toLocaleString()}
                                 </td>
                                 <td className="px-5 py-3.5 text-right">
-                                  <span className={`text-xs font-black px-2 py-0.5 rounded-lg text-[9px] ${bal > 0.01
+                                  <span className={`text-xs font-bold px-2 py-0.5 rounded-lg text-[9px] ${bal > 0.01
                                       ? 'bg-green-50 text-green-600'
                                       : bal < -0.01
                                         ? 'bg-rose-50 text-rose-600'
-                                        : 'bg-slate-100 text-slate-400'
+                                        : 'bg-slate-100 dark:bg-white/10 text-slate-400'
                                     }`}>
                                     {bal > 0.01
                                       ? `+₹${Math.round(bal)}`
@@ -1466,11 +1466,11 @@ export default function SantoriniTripPage() {
                   </div>
 
                   {selectedExpense.notes && (
-                    <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-4.5 flex gap-3 text-xs text-blue-700">
+                    <div className="bg-blue-50/50 dark:bg-blue-500/10 border border-blue-100 dark:border-blue-500/20 rounded-2xl p-4.5 flex gap-3 text-xs text-blue-700 dark:text-blue-400">
                       <Info size={16} className="shrink-0 mt-0.5 text-blue-500" />
                       <div>
                         <p className="font-bold">Expense Notes</p>
-                        <p className="mt-0.5 text-blue-600/90 font-medium">{selectedExpense.notes}</p>
+                        <p className="mt-0.5 text-blue-600/90 dark:text-blue-400/90 font-medium">{selectedExpense.notes}</p>
                       </div>
                     </div>
                   )}
@@ -1479,14 +1479,14 @@ export default function SantoriniTripPage() {
 
                 {/* Right side: quick actions */}
                 <div className="lg:col-span-4 space-y-6">
-                  <div className="bg-slate-50 border border-slate-100 rounded-2xl p-5 space-y-4">
-                    <h3 className="text-xs font-black text-slate-700 uppercase tracking-wider">Settlement suggestion</h3>
-                    <p className="text-[10px] text-slate-400 font-medium leading-relaxed">
+                  <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-[24px] p-5 space-y-4">
+                    <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Settlement suggestion</h3>
+                    <p className="text-[10px] text-slate-500 font-medium leading-relaxed">
                       Settle this specific expense immediately using auto suggestions.
                     </p>
                     <button
                       onClick={() => openContributionModal(selectedExpense)}
-                      className="w-full bg-[oklch(0.55_0.24_262.66)] text-white py-3.5 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm active:scale-97 transition-all flex items-center justify-center gap-1.5"
+                      className="w-full bg-blue-600 text-white py-3.5 rounded-xl text-xs font-bold hover:bg-blue-700 shadow-sm active:scale-97 transition-all flex items-center justify-center gap-1.5"
                     >
                       <Edit2 size={13} /> Update Payments
                     </button>
@@ -1495,7 +1495,7 @@ export default function SantoriniTripPage() {
                         setExpenses(expenses.filter(e => e.id !== selectedExpense.id));
                         setShowDetailDrawer(false);
                       }}
-                      className="w-full bg-white border border-rose-100 text-rose-500 py-3 rounded-xl text-xs font-bold hover:bg-rose-50 transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full bg-white dark:bg-transparent border border-rose-100 dark:border-rose-500/30 text-rose-500 py-3 rounded-xl text-xs font-bold hover:bg-rose-50 dark:hover:bg-rose-500/10 transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Trash2 size={13} /> Delete Expense
                     </button>
@@ -1513,29 +1513,29 @@ export default function SantoriniTripPage() {
       {showContributionModal && (
         <>
           <div className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm" onClick={() => setShowContributionModal(null)} />
-          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white rounded-3xl shadow-[0_8px_40px_rgba(0,0,0,0.25)] max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-x-4 bottom-4 md:inset-x-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-50 bg-white dark:bg-[#111111] rounded-[24px] shadow-premium max-w-md w-full overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100 dark:border-white/10">
             <div className="p-6 space-y-5">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-white/10">
                 <div>
-                  <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider leading-none mb-1">Update payments</h3>
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">{showContributionModal.title}</p>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider leading-none mb-1">Update payments</h3>
+                  <p className="text-[10px] text-slate-500 font-bold uppercase">{showContributionModal.title}</p>
                 </div>
-                <button onClick={() => setShowContributionModal(null)} className="text-slate-400 hover:text-slate-600 transition-colors">
+                <button onClick={() => setShowContributionModal(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
                   <X size={18} />
                 </button>
               </div>
 
               <div className="space-y-3.5 max-h-[300px] overflow-y-auto pr-1">
                 {members.map(m => (
-                  <div key={m.id} className="flex items-center justify-between gap-3 bg-slate-50 p-2.5 rounded-2xl border border-slate-100/50">
+                  <div key={m.id} className="flex items-center justify-between gap-3 bg-slate-50 dark:bg-white/5 p-2.5 rounded-2xl border border-slate-100/50 dark:border-white/10">
                     <div className="flex items-center gap-2.5">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${m.color}`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${m.color}`}>
                         {m.avatar}
                       </div>
-                      <span className="text-xs font-bold text-slate-700">{m.name}</span>
+                      <span className="text-xs font-bold text-slate-700 dark:text-slate-300">{m.name}</span>
                     </div>
                     <div className="relative w-28">
-                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">₹</span>
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-500">₹</span>
                       <input
                         type="number"
                         value={tempPayments[m.id] || ''}
@@ -1544,28 +1544,28 @@ export default function SantoriniTripPage() {
                           [m.id]: e.target.value
                         })}
                         placeholder="0"
-                        className="w-full bg-white border border-slate-200 rounded-xl pl-7 pr-3 py-2 text-xs font-black focus:outline-none focus:border-[oklch(0.55_0.24_262.66)] transition-all text-right"
+                        className="w-full bg-white dark:bg-black/20 border border-slate-200 dark:border-white/10 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 transition-all text-right"
                       />
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 text-[10px] text-slate-400 font-bold flex items-center gap-2">
-                <Info size={13} className="text-[oklch(0.55_0.24_262.66)]" />
+              <div className="bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-xl p-3 text-[10px] text-slate-500 font-bold flex items-center gap-2">
+                <Info size={13} className="text-blue-600" />
                 <span>Adjusting these values updates balances and suggests settlements in real time.</span>
               </div>
 
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <button
                   onClick={() => setShowContributionModal(null)}
-                  className="bg-white border border-slate-200 text-slate-600 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 transition-colors"
+                  className="bg-white dark:bg-[#111111] border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 py-3 rounded-xl text-xs font-bold hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleSaveContribution}
-                  className="bg-[oklch(0.55_0.24_262.66)] text-white py-3 rounded-xl text-xs font-bold hover:bg-[#2980b9] shadow-sm transition-all"
+                  className="bg-blue-600 text-white py-3 rounded-xl text-xs font-bold hover:bg-blue-700 shadow-sm transition-all"
                 >
                   Save Changes
                 </button>
