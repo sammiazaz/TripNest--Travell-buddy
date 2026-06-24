@@ -82,7 +82,7 @@ export default function HeroCarousel() {
       </div>
 
       <div className="relative w-full h-[460px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/10">
-        <div 
+        <div
           className="flex w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
@@ -94,78 +94,78 @@ export default function HeroCarousel() {
                 key={trip.id}
                 className="min-w-full h-full relative"
               >
-              <img
-                src={trip.image}
-                alt={trip.title}
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+                <img
+                  src={trip.image}
+                  alt={trip.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-              <div className="absolute inset-0 p-10 flex flex-col justify-between">
-                <div className="flex justify-between items-start">
-                  <span className={`${trip.badgeColor} text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2`}>
-                    <span className={`w-2 h-2 rounded-full ${trip.pulseColor} ${!trip.isCompleted ? 'animate-pulse' : ''}`} />
-                    {trip.status}
-                  </span>
-                  <div className="bg-black/50 border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
-                    {trip.progress}
-                  </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                  <div>
-                    <h2 className="text-5xl font-black text-white tracking-tight mb-4 drop-shadow-md">{trip.title}</h2>
-
-                    <div className="flex flex-wrap items-center gap-6 text-white/90">
-                      <div className="flex items-center gap-2 font-medium">
-                        <Calendar size={18} className="text-[oklch(0.55_0.24_262.66)]" />
-                        {trip.date}
-                      </div>
-                      <div className="flex items-center gap-2 font-medium">
-                        <Users size={18} className="text-[oklch(0.55_0.24_262.66)]" />
-                        {trip.members}
-                      </div>
-                      <div className="flex items-center gap-2 font-medium">
-                        <Wallet size={18} className="text-[oklch(0.55_0.24_262.66)]" />
-                        {trip.budget}
-                      </div>
+                <div className="absolute inset-0 p-10 flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <span className={`${trip.badgeColor} text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-2`}>
+                      <span className={`w-2 h-2 rounded-full ${trip.pulseColor} ${!trip.isCompleted ? 'animate-pulse' : ''}`} />
+                      {trip.status}
+                    </span>
+                    <div className="bg-black/50 border border-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                      {trip.progress}
                     </div>
                   </div>
 
-                  {isActive && (
-                    <div className="flex flex-wrap items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 fill-mode-both">
-                      {!trip.isCompleted ? (
-                        <>
-                          <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                            <MapIcon size={18} />
-                            Open Trip
-                          </button>
-                          <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                            <Calendar size={18} />
-                            View Timeline
-                          </button>
-                          <button className="px-6 py-3.5 bg-[oklch(0.55_0.24_262.66)] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-[0_4px_20px_rgba(52,152,219,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                            <CreditCard size={18} />
-                            Add Expense
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                            <ImageIcon size={18} />
-                            View Memories
-                          </button>
-                          <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                            <Wallet size={18} />
-                            Expense Summary
-                          </button>
-                        </>
-                      )}
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                    <div>
+                      <h2 className="text-5xl font-black text-white tracking-tight mb-4 drop-shadow-md">{trip.title}</h2>
+
+                      <div className="flex flex-wrap items-center gap-6 text-white/90">
+                        <div className="flex items-center gap-2 font-medium">
+                          <Calendar size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                          {trip.date}
+                        </div>
+                        <div className="flex items-center gap-2 font-medium">
+                          <Users size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                          {trip.members}
+                        </div>
+                        <div className="flex items-center gap-2 font-medium">
+                          <Wallet size={18} className="text-[oklch(0.55_0.24_262.66)]" />
+                          {trip.budget}
+                        </div>
+                      </div>
                     </div>
-                  )}
+
+                    {isActive && (
+                      <div className="flex flex-wrap items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 fill-mode-both">
+                        {!trip.isCompleted ? (
+                          <>
+                            <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                              <MapIcon size={18} />
+                              Open Trip
+                            </button>
+                            <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                              <Calendar size={18} />
+                              View Timeline
+                            </button>
+                            <button className="px-6 py-3.5 bg-[oklch(0.55_0.24_262.66)] hover:bg-[#2980b9] text-white font-bold rounded-xl shadow-[0_4px_20px_rgba(52,152,219,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                              <CreditCard size={18} />
+                              Add Expense
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button className="px-6 py-3.5 bg-white text-[#191c1d] hover:bg-slate-50 font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                              <ImageIcon size={18} />
+                              View Memories
+                            </button>
+                            <button className="px-6 py-3.5 bg-black/50 hover:bg-black/70 border border-white/20 text-white font-bold rounded-xl shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                              <Wallet size={18} />
+                              Expense Summary
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
               </div>
             );
           })}
